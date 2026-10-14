@@ -260,18 +260,7 @@ button:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,0.3)}
   letter-spacing: 2px !important;
 }
 
-/* 🆕 Panel Pengaturan Cetak */
-.print-toggle-panel{background:rgba(139,92,246,0.1);border:2px solid rgba(139,92,246,0.3);border-radius:12px;padding:15px;margin-top:15px}
-.print-toggle-panel h4{color:#fbbf24;margin-bottom:12px;font-size:15px;display:flex;align-items:center;gap:8px}
-.toggle-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.toggle-item{display:flex;align-items:center;gap:8px;background:rgba(0,0,0,0.2);padding:8px 10px;border-radius:8px;border:1px solid rgba(251,191,36,0.15);transition:all 0.3s}
-.toggle-item:hover{border-color:rgba(251,191,36,0.4);background:rgba(0,0,0,0.3)}
-.toggle-item input[type="checkbox"]{width:18px;height:18px;margin:0;accent-color:#10b981;cursor:pointer;flex-shrink:0}
-.toggle-item label{font-size:13px;color:#e0e0e0;cursor:pointer;flex:1;margin:0;font-weight:normal}
-.toggle-item.off{opacity:0.5}
-.toggle-item.off label{text-decoration:line-through;color:#9ca3af}
-.toggle-all-btn{width:100%;margin-top:10px;padding:8px;background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:bold;cursor:pointer;transition:all 0.3s}
-.toggle-all-btn:hover{transform:translateY(-2px);box-shadow:0 5px 15px rgba(139,92,246,0.4)}
+
 
 .batch-section{margin-top:15px;border:1.5px solid rgba(251,191,36,0.2);border-radius:12px;overflow:hidden;background:rgba(0,0,0,0.2)}
 .batch-header{background:rgba(59,130,246,0.1);padding:12px 15px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(251,191,36,0.2)}.batch-header h4{margin:0;font-size:15px;color:#fbbf24}.batch-header button{width:auto;padding:8px 12px;margin:0;font-size:13px}
@@ -404,24 +393,47 @@ button:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,0.3)}
 
   <div class="middle-col">
     <div class="f" id="formSection">
-      <h4>✏️ Edit Baris #<span id="editRowNum">1</span></h4>
-      <div class="form-top-row">
-        <div class="col">
-          <label>Nama Customer <span style="font-size:12px;color:#9ca3af;font-weight:normal">(kosong = auto tanggal)</span></label>
-          <input type="text" id="customerName" placeholder="Kosongkan = auto tgl/jam" autocomplete="off">
-          <label>Catatan Baris</label>
-          <textarea id="batch_note" placeholder="Catatan..." rows="2" oninput="updateBatchFromForm()"></textarea>
-        </div>
-        <div class="col">
-          <label>🐉 Tahun Bazi</label>
-          <select id="batch_y" onchange="updateBatchFromForm()"></select>
-          <label>🌙 Bulan Lunar</label>
-          <input type="text" id="batch_m_input" placeholder="cth: 1 atau juli" oninput="parseMonthInput()">
-          <div class="month-helper">1=正, 2=二, 3=三, 4=四, 5=五, 6=六, 7=七, 8=八, 9=九, 10=十, 11=十一, 12=十二</div>
-          <label> Tanggal (1-30)</label>
-          <input type="text" id="batch_d_input" placeholder="cth: 15" oninput="parseDayInput()">
-        </div>
-      </div>
+     <h4>✏️ Edit Baris #<span id="editRowNum">1</span></h4>
+
+<!-- 🆕 PANEL TOGGLE DI ATAS -->
+<div class="print-toggle-panel" style="margin-top:0;margin-bottom:15px">
+  <h4 style="margin-bottom:8px">🖨️ Pilih Bagian yang Dicetak</h4>
+  <div class="toggle-grid">
+    <div class="toggle-item" id="toggle-year-item">
+      <input type="checkbox" id="toggle-year" checked onchange="updatePrintToggles(); updatePreview()">
+      <label for="toggle-year">📅 Tahun</label>
+    </div>
+    <div class="toggle-item" id="toggle-month-item">
+      <input type="checkbox" id="toggle-month" checked onchange="updatePrintToggles(); updatePreview()">
+      <label for="toggle-month">🌙 Bulan</label>
+    </div>
+    <div class="toggle-item" id="toggle-day-item">
+      <input type="checkbox" id="toggle-day" checked onchange="updatePrintToggles(); updatePreview()">
+      <label for="toggle-day">📆 Tanggal</label>
+    </div>
+    <div class="toggle-item" id="toggle-marga-item">
+      <input type="checkbox" id="toggle-marga" checked onchange="updatePrintToggles(); updatePreview()">
+      <label for="toggle-marga">🏷️ Marga</label>
+    </div>
+    <div class="toggle-item" id="toggle-name-item">
+      <input type="checkbox" id="toggle-name" checked onchange="updatePrintToggles(); updatePreview()">
+      <label for="toggle-name"> Nama (semua)</label>
+    </div>
+    <div class="toggle-item" id="toggle-fu-item">
+      <input type="checkbox" id="toggle-fu" checked onchange="updatePrintToggles(); updatePreview()">
+      <label for="toggle-fu">🏛️ Fu (府)</label>
+    </div>
+    <div class="toggle-item" id="toggle-pair-item">
+      <input type="checkbox" id="toggle-pair" checked onchange="updatePrintToggles(); updatePreview()">
+      <label for="toggle-pair"> 妣考</label>
+    </div>
+    <div class="toggle-item" id="toggle-persembahan-item">
+      <input type="checkbox" id="toggle-persembahan" checked onchange="updatePrintToggles(); updatePreview()">
+      <label for="toggle-persembahan">🎁 Persembahan</label>
+    </div>
+  </div>
+</div>
+<!-- AKHIR PANEL TOGGLE -->
       <label>Hubungan Keluarga</label>
       <select id="batch_t" onchange="updateBatchNameFields(); updateBatchFromForm()">
         <option value="typeA">Ayah/Paman (顯考)</option>
