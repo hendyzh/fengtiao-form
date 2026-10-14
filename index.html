@@ -110,7 +110,7 @@
       showMainApp();
       toast('✅ Login berhasil!');
     } else {
-      toast(' Password salah!');
+      toast('❌ Password salah!');
       document.getElementById('login-password').value = '';
       document.getElementById('login-password').classList.add('shake');
       setTimeout(() => document.getElementById('login-password').classList.remove('shake'), 500);
@@ -144,7 +144,7 @@
       document.getElementById('new-password').value = '';
       document.getElementById('confirm-password').value = '';
     } else {
-      alert('❌ Gagal menyimpan password! Coba lagi.');
+      alert(' Gagal menyimpan password! Coba lagi.');
     }
   }
 </script>
@@ -239,12 +239,12 @@ button:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,0.3)}
 .preview-m{left:28mm;top:10mm;font-size:34pt;line-height:1.2}.preview-mE0{left:28mm;top:10mm;font-size:34pt;line-height:1.2}.preview-g0{left:28mm;top:10mm;font-size:34pt;line-height:1.2}
 .preview-marga{left:28mm;top:32mm;font-size:34pt;letter-spacing:.5mm}.preview-gm{left:28mm;top:32mm;font-size:34pt;letter-spacing:.5mm}
 .preview-fu{left:28mm;top:45mm;font-size:34pt;letter-spacing:.5mm}.preview-gfu{left:28mm;top:45mm;font-size:34pt;letter-spacing:.5mm}
-.preview-m2{left:26mm;top:65mm;font-size:18pt;font-weight:900;letter-spacing:.5mm;transform-origin:top center;transform:scaleY(1.5)}.preview-m3{left:36mm;top:65mm;font-size:18pt;font-weight:900;letter-spacing:.5mm;transform-origin:top center;transform:scaleY(1.5)}
-.preview-mE1{left:26mm;top:65mm;font-size:18pt;font-weight:900;letter-spacing:.5mm;transform-origin:top center;transform:scaleY(1.5)}.preview-mE2{left:36mm;top:65mm;font-size:18pt;font-weight:900;letter-spacing:.5mm;transform-origin:top center;transform:scaleY(1.5)}
+.preview-m2{left:29mm;top:65mm;font-size:18pt;font-weight:900;letter-spacing:.5mm;transform-origin:top center;transform:scaleY(1.5)}.preview-m3{left:36mm;top:65mm;font-size:18pt;font-weight:900;letter-spacing:.5mm;transform-origin:top center;transform:scaleY(1.5)}
+.preview-mE1{left:29mm;top:65mm;font-size:18pt;font-weight:900;letter-spacing:.5mm;transform-origin:top center;transform:scaleY(1.5)}.preview-mE2{left:36mm;top:65mm;font-size:18pt;font-weight:900;letter-spacing:.5mm;transform-origin:top center;transform:scaleY(1.5)}
 .preview-g1{left:25mm;top:65mm;font-size:18pt;font-weight:900;letter-spacing:.5mm;transform-origin:top center;transform:scaleY(1.5)}.preview-g2{left:32mm;top:65mm;font-size:18pt;font-weight:900;letter-spacing:.5mm;transform-origin:top center;transform:scaleY(1.5)}.preview-g3{left:39mm;top:65mm;font-size:18pt;font-weight:900;letter-spacing:.5mm;transform-origin:top center;transform:scaleY(1.5)}
 .preview-k{left:10mm;top:25mm;font-size:32pt}
 
-/* 🆕 CSS BARU untuk pasangan karakter horizontal yang center */
+/* 🆕 CSS untuk pasangan horizontal "妣考" */
 .h-pair {
   position: absolute !important;
   writing-mode: horizontal-tb !important;
@@ -259,6 +259,19 @@ button:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,0.3)}
   white-space: nowrap !important;
   letter-spacing: 2px !important;
 }
+
+/* 🆕 Panel Pengaturan Cetak */
+.print-toggle-panel{background:rgba(139,92,246,0.1);border:2px solid rgba(139,92,246,0.3);border-radius:12px;padding:15px;margin-top:15px}
+.print-toggle-panel h4{color:#fbbf24;margin-bottom:12px;font-size:15px;display:flex;align-items:center;gap:8px}
+.toggle-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.toggle-item{display:flex;align-items:center;gap:8px;background:rgba(0,0,0,0.2);padding:8px 10px;border-radius:8px;border:1px solid rgba(251,191,36,0.15);transition:all 0.3s}
+.toggle-item:hover{border-color:rgba(251,191,36,0.4);background:rgba(0,0,0,0.3)}
+.toggle-item input[type="checkbox"]{width:18px;height:18px;margin:0;accent-color:#10b981;cursor:pointer;flex-shrink:0}
+.toggle-item label{font-size:13px;color:#e0e0e0;cursor:pointer;flex:1;margin:0;font-weight:normal}
+.toggle-item.off{opacity:0.5}
+.toggle-item.off label{text-decoration:line-through;color:#9ca3af}
+.toggle-all-btn{width:100%;margin-top:10px;padding:8px;background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:bold;cursor:pointer;transition:all 0.3s}
+.toggle-all-btn:hover{transform:translateY(-2px);box-shadow:0 5px 15px rgba(139,92,246,0.4)}
 
 .batch-section{margin-top:15px;border:1.5px solid rgba(251,191,36,0.2);border-radius:12px;overflow:hidden;background:rgba(0,0,0,0.2)}
 .batch-header{background:rgba(59,130,246,0.1);padding:12px 15px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(251,191,36,0.2)}.batch-header h4{margin:0;font-size:15px;color:#fbbf24}.batch-header button{width:auto;padding:8px 12px;margin:0;font-size:13px}
@@ -314,28 +327,7 @@ button:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,0.3)}
 .month-helper{font-size:12px;color:rgba(251,191,36,0.6);margin-top:5px;font-style:italic}
 
 @media (max-width:1024px){.main-layout{flex-wrap:wrap}.left-col,.middle-col,.right-col{flex:1 1 100%;min-width:100%}}
-@media print{@page{size:72mm 320mm;margin:0}*{margin:0;padding:0;box-sizing:border-box}body{background:#fff;padding:0;margin:0;font-family:"SimSun","KaiTi",serif}.main-layout,.modal-overlay,.toast,.print-confirm-overlay,.tambahan-box,.batch-section,.copy-info-box,.f,.customer-app-container,.link-generator-overlay,.top-bar,#login-page,#change-password-modal{display:none !important}.print-queue{display:block !important}.print-item{width:72mm;height:320mm;position:relative;background:#fff;page-break-after:always;margin:0;padding:0;overflow:hidden}.print-item:last-child{page-break-after:auto}.print-item .c{position:absolute;writing-mode:vertical-rl;font-weight:bold;color:#000}.print-item .h-pair {
-  position: absolute !important;
-  writing-mode: horizontal-tb !important;
-  font-size: 24pt !important;
-  font-weight: 900 !important;
-  font-family: "SimSun","KaiTi",serif !important;
-  color: #000 !important;
-  text-align: center !important;
-  left: 26mm !important;
-  width: 20mm !important;
-  line-height: 1 !important;
-  white-space: nowrap !important;
-  letter-spacing: 2px !important;
-  -webkit-print-color-adjust: exact !important;
-  print-color-adjust: exact !important;
-}
-.print-item .t1{left:48.9mm;top:207mm;font-size:24pt}.print-item .t2{left:48.9mm;top:243mm;font-size:24pt}.print-item .t3{left:48.9mm;top:272.1mm;font-size:22pt}.print-item .m{left:28mm;top:200mm;font-size:34pt;line-height:1.2}.print-item .mE0{left:28mm;top:200mm;font-size:34pt;line-height:1.2}.print-item .g0{left:28mm;top:200mm;font-size:34pt;line-height:1.2}.print-item .marga{left:28mm;top:222mm;font-size:34pt;letter-spacing:.5mm}.print-item .gm{left:28mm;top:222mm;font-size:34pt;letter-spacing:.5mm}.print-item .fu{left:28mm;top:235mm;font-size:34pt;letter-spacing:.5mm}.print-item .gfu{left:28mm;top:235mm;font-size:34pt;letter-spacing:.5mm}.print-item .m2{left:26mm;top:255mm;font-size:18pt;font-weight:900;letter-spacing:.5mm;transform-origin:top center;transform:scaleY(1.5)}.print-item .m3{left:36mm;top:255mm;font-size:18pt;font-weight:900;letter-spacing:.5mm;transform-origin:top center;transform:scaleY(1.5)}
-.print-item .mE1{left:26mm;top:255mm;font-size:18pt;font-weight:900;letter-spacing:.5mm;transform-origin:top center;transform:scaleY(1.5)}.print-item .mE2{left:36mm;top:255mm;font-size:18pt;font-weight:900;letter-spacing:.5mm;transform-origin:top center;transform:scaleY(1.5)}
-.print-item .g1{left:25mm;top:255mm;font-size:18pt;font-weight:900;letter-spacing:.5mm;transform-origin:top center;transform:scaleY(1.5)}.print-item .g2{left:32mm;top:255mm;font-size:18pt;font-weight:900;letter-spacing:.5mm;transform-origin:top center;transform:scaleY(1.5)}.print-item .g3{left:39mm;top:255mm;font-size:18pt;font-weight:900;letter-spacing:.5mm;transform-origin:top center;transform:scaleY(1.5)}.print-item .k{left:10mm;top:225mm;font-size:32pt}.print-item .corner-pinyin{position:absolute;left:2mm;right:2mm;top:2mm;font-family:Arial,sans-serif;font-size:7pt;color:#000;writing-mode:horizontal-tb;text-align:center;padding:0 2mm 1mm 2mm}
-.print-item .corner-pinyin.hidden{display:none}
-.print-item .corner-translation{position:absolute;left:2mm;right:2mm;bottom:2mm;font-family:Arial,sans-serif;font-size:7pt;color:#000;writing-mode:horizontal-tb;text-align:center;padding:1mm 2mm 0 2mm;border-top:.5px solid #000}
-.print-item .corner-translation.hidden{display:none}}
+@media print{@page{size:72mm 320mm;margin:0}*{margin:0;padding:0;box-sizing:border-box}body{background:#fff;padding:0;margin:0;font-family:"SimSun","KaiTi",serif}.main-layout,.modal-overlay,.toast,.print-confirm-overlay,.tambahan-box,.batch-section,.copy-info-box,.f,.customer-app-container,.link-generator-overlay,.top-bar,#login-page,#change-password-modal{display:none !important}.print-queue{display:block !important}.print-item{width:72mm;height:320mm;position:relative;background:#fff;page-break-after:always;margin:0;padding:0;overflow:hidden}.print-item:last-child{page-break-after:auto}.print-item .c{position:absolute;writing-mode:vertical-rl;font-weight:bold;color:#000}.print-item .h-pair { position: absolute !important; writing-mode: horizontal-tb !important; font-size: 24pt !important; font-weight: 900 !important; font-family: "SimSun","KaiTi",serif !important; color: #000 !important; text-align: center !important; left: 26mm !important; width: 20mm !important; line-height: 1 !important; white-space: nowrap !important; letter-spacing: 2px !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }.print-item .t1{left:48.9mm;top:207mm;font-size:24pt}.print-item .t2{left:48.9mm;top:243mm;font-size:24pt}.print-item .t3{left:48.9mm;top:272.1mm;font-size:22pt}.print-item .m{left:28mm;top:200mm;font-size:34pt;line-height:1.2}.print-item .mE0{left:28mm;top:200mm;font-size:34pt;line-height:1.2}.print-item .g0{left:28mm;top:200mm;font-size:34pt;line-height:1.2}.print-item .marga{left:28mm;top:222mm;font-size:34pt;letter-spacing:.5mm}.print-item .gm{left:28mm;top:222mm;font-size:34pt;letter-spacing:.5mm}.print-item .fu{left:28mm;top:235mm;font-size:34pt;letter-spacing:.5mm}.print-item .gfu{left:28mm;top:235mm;font-size:34pt;letter-spacing:.5mm}.print-item .m2{left:29mm;top:255mm;font-size:18pt;font-weight:900;letter-spacing:.5mm;transform-origin:top center;transform:scaleY(1.5)}.print-item .m3{left:36mm;top:255mm;font-size:18pt;font-weight:900;letter-spacing:.5mm;transform-origin:top center;transform:scaleY(1.5)}.print-item .mE1{left:29mm;top:255mm;font-size:18pt;font-weight:900;letter-spacing:.5mm;transform-origin:top center;transform:scaleY(1.5)}.print-item .mE2{left:36mm;top:255mm;font-size:18pt;font-weight:900;letter-spacing:.5mm;transform-origin:top center;transform:scaleY(1.5)}.print-item .g1{left:25mm;top:255mm;font-size:18pt;font-weight:900;letter-spacing:.5mm;transform-origin:top center;transform:scaleY(1.5)}.print-item .g2{left:32mm;top:255mm;font-size:18pt;font-weight:900;letter-spacing:.5mm;transform-origin:top center;transform:scaleY(1.5)}.print-item .g3{left:39mm;top:255mm;font-size:18pt;font-weight:900;letter-spacing:.5mm;transform-origin:top center;transform:scaleY(1.5)}.print-item .k{left:10mm;top:225mm;font-size:32pt}.print-item .corner-pinyin{position:absolute;left:2mm;right:2mm;top:2mm;font-family:Arial,sans-serif;font-size:7pt;color:#000;writing-mode:horizontal-tb;text-align:center;padding:0 2mm 1mm 2mm}.print-item .corner-pinyin.hidden{display:none}.print-item .corner-translation{position:absolute;left:2mm;right:2mm;bottom:2mm;font-family:Arial,sans-serif;font-size:7pt;color:#000;writing-mode:horizontal-tb;text-align:center;padding:1mm 2mm 0 2mm;border-top:.5px solid #000}.print-item .corner-translation.hidden{display:none}}
 </style>
 </head>
 <body>
@@ -380,11 +372,11 @@ button:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,0.3)}
       <div class="top-bar">
         <button class="b7" onclick="openModal()">📋 Daftar</button>
         <button class="b13" onclick="openLinkGenerator()">🔗 Link</button>
-        <button class="b16" onclick="openChangePassword()"> Ganti PW</button>
-        <button class="b15" onclick="logout()"> Logout</button>
+        <button class="b16" onclick="openChangePassword()">🔑 Ganti PW</button>
+        <button class="b15" onclick="logout()">🚪 Logout</button>
       </div>
       <div class="batch-section">
-        <div class="batch-header"><h4>📋 Baris</h4><button class="b9" onclick="addBatchRow()" style="width:auto;padding:6px 12px;margin:0;font-size:14px">➕ Tambah</button></div>
+        <div class="batch-header"><h4>📋 Baris</h4><button class="b9" onclick="addBatchRow()" style="width:auto;padding:6px 12px;margin:0;font-size:14px"> Tambah</button></div>
         <div class="batch-list" id="batchList"><div class="batch-empty">Klik ➕ untuk mulai</div></div>
       </div>
       <div class="copy-info-box h" id="copyInfoBox">
@@ -438,7 +430,7 @@ button:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,0.3)}
         <option value="typeD">Kakek (顯祖考)</option>
         <option value="typeE">Nenek (顯祖妣)</option>
         <option value="typeF">Kakek Nenek (祖妣考)</option>
-        <option value="typeG">Suami Istri (顯考)</option>
+        <option value="typeG">Suami Istri (顯妣考)</option>
         <option value="typeH">2 Istri (Suami + 2 Istri)</option>
         <option value="typeI">Leluhur (府歷代祖先)</option>
       </select>
@@ -461,7 +453,7 @@ button:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,0.3)}
       </div>
       <div class="tambahan-box">
         <div class="tambahan-header">
-          <h4> Persembahan (klik ✕ hapus 1)</h4>
+          <h4>🎯 Persembahan (klik ✕ hapus 1)</h4>
           <button class="clear-btn" onclick="clearPersembahan()">🗑️ Clear All</button>
         </div>
         <div class="persembahan-display" id="persembahanDisplay">
@@ -472,8 +464,51 @@ button:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,0.3)}
           <div class="tambahan-empty-search">Ketik untuk mencari...</div>
         </div>
       </div>
+      
+      <!-- 🆕 PANEL PENGATURAN CETAK (ON/OFF) -->
+      <div class="print-toggle-panel">
+        <h4>🖨️ Pengaturan Cetak (Pilih Bagian yang Dicetak)</h4>
+        <div class="toggle-grid">
+          <div class="toggle-item" id="toggle-year-item">
+            <input type="checkbox" id="toggle-year" checked onchange="updatePrintToggles(); updatePreview()">
+            <label for="toggle-year">📅 Tahun (年)</label>
+          </div>
+          <div class="toggle-item" id="toggle-month-item">
+            <input type="checkbox" id="toggle-month" checked onchange="updatePrintToggles(); updatePreview()">
+            <label for="toggle-month">🌙 Bulan (月)</label>
+          </div>
+          <div class="toggle-item" id="toggle-day-item">
+            <input type="checkbox" id="toggle-day" checked onchange="updatePrintToggles(); updatePreview()">
+            <label for="toggle-day">📆 Tanggal (日)</label>
+          </div>
+          <div class="toggle-item" id="toggle-marga-item">
+            <input type="checkbox" id="toggle-marga" checked onchange="updatePrintToggles(); updatePreview()">
+            <label for="toggle-marga">🏷️ Marga</label>
+          </div>
+          <div class="toggle-item" id="toggle-name-item">
+            <input type="checkbox" id="toggle-name" checked onchange="updatePrintToggles(); updatePreview()">
+            <label for="toggle-name"> Nama</label>
+          </div>
+          <div class="toggle-item" id="toggle-fu-item">
+            <input type="checkbox" id="toggle-fu" checked onchange="updatePrintToggles(); updatePreview()">
+            <label for="toggle-fu">🏛️ Fu (府)</label>
+          </div>
+          <div class="toggle-item" id="toggle-pair-item">
+            <input type="checkbox" id="toggle-pair" checked onchange="updatePrintToggles(); updatePreview()">
+            <label for="toggle-pair">👫 妣考</label>
+          </div>
+          <div class="toggle-item" id="toggle-persembahan-item">
+            <input type="checkbox" id="toggle-persembahan" checked onchange="updatePrintToggles(); updatePreview()">
+            <label for="toggle-persembahan"> Persembahan</label>
+          </div>
+        </div>
+        <button class="toggle-all-btn" onclick="toggleAllPrint(true)">✅ Aktifkan Semua</button>
+        <button class="toggle-all-btn" onclick="toggleAllPrint(false)" style="background:linear-gradient(135deg,#6b7280,#4b5563);margin-top:5px">⏸️ Matikan Semua</button>
+      </div>
+      <!-- AKHIR PANEL PENGATURAN CETAK -->
+      
       <div style="background:rgba(59,130,246,0.1);border:1.5px solid rgba(59,130,246,0.3);border-radius:10px;padding:10px 12px;margin-top:12px;display:flex;align-items:center;justify-content:space-between;gap:10px">
-        <div style="font-size:14px;color:#60a5fa;font-weight:bold;flex:1"> Pinyin & Terjemahan<span style="font-size:12px;color:#9ca3af;font-weight:normal;display:block">Atas: pinyin • Bawah: arti</span></div>
+        <div style="font-size:14px;color:#60a5fa;font-weight:bold;flex:1">📖 Pinyin & Terjemahan<span style="font-size:12px;color:#9ca3af;font-weight:normal;display:block">Atas: pinyin • Bawah: arti</span></div>
         <label style="position:relative;display:inline-block;width:50px;height:24px;flex-shrink:0;margin:0;cursor:pointer"><input type="checkbox" id="showPinyinToggle" checked onchange="updatePreview(); updateCopyBox()" style="opacity:0;width:0;height:0"><span style="position:absolute;cursor:pointer;inset:0;background:linear-gradient(135deg,#10b981,#059669);transition:.3s;border-radius:20px" id="sliderBg"></span><span style="position:absolute;height:18px;width:18px;left:3px;bottom:3px;background:#fff;transition:.3s;border-radius:50%;transform:translateX(22px);box-shadow:0 2px 5px rgba(0,0,0,0.3)" id="sliderDot"></span></label>
       </div>
     </div>
@@ -503,7 +538,6 @@ button:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,0.3)}
         <div class="preview-c preview-g3 h" id="previewG3"></div>
         <div class="preview-c preview-k" id="previewK"></div>
         <div class="preview-corner-translation hidden" id="previewTranslation"></div>
-        <!-- 🆕 Elemen baru untuk pasangan karakter horizontal -->
         <div class="h-pair h" id="previewHPair"></div>
       </div>
     </div>
@@ -545,7 +579,7 @@ button:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,0.3)}
     </div>
     <input type="text" class="modal-search" id="modalSearch" placeholder="🔍 Cari nama..." oninput="filterModalList()">
     <div class="modal-tabs">
-      <div class="modal-tab active" onclick="switchTab('inbox')">📥 Inbox (Baru) <span id="inboxBadge" class="notification-badge h">0</span></div>
+      <div class="modal-tab active" onclick="switchTab('inbox')"> Inbox (Baru) <span id="inboxBadge" class="notification-badge h">0</span></div>
       <div class="modal-tab" onclick="switchTab('main')">📋 Arsip Utama</div>
     </div>
     <div id="tab-inbox" class="modal-tab-content active">
@@ -567,8 +601,8 @@ button:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,0.3)}
     <div id="linkResult" style="display:none">
       <label style="margin-top:20px;display:block;color:#fbbf24;font-weight:bold">Link untuk Customer:</label>
       <div class="link-result" id="generatedLink"></div>
-      <button class="b2" style="width:100%;margin-top:15px;padding:14px" onclick="copyLinkToClipboard()"> Copy Link</button>
-      <button class="b1" style="width:100%;margin-top:12px;padding:14px" onclick="openWhatsAppWithLink()">📱 Kirim via WA</button>
+      <button class="b2" style="width:100%;margin-top:15px;padding:14px" onclick="copyLinkToClipboard()">📋 Copy Link</button>
+      <button class="b1" style="width:100%;margin-top:12px;padding:14px" onclick="openWhatsAppWithLink()"> Kirim via WA</button>
     </div>
     <button class="b5" style="width:100%;margin-top:15px;padding:14px" onclick="closeLinkGenerator()">Tutup</button>
   </div>
@@ -617,7 +651,7 @@ button:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,0.3)}
 })();
 
 const relationDB = [
-  {keys:['1','satu','pertama','yi','first'],char:'一',desc:'1'},{keys:['2','dua','kedua','er','second'],char:'二',desc:'2'},{keys:['3','tiga','ketiga','san','third'],char:'三',desc:'3'},{keys:['4','empat','keempat','si','fourth'],char:'四',desc:'4'},{keys:['5','lima','kelima','wu','fifth'],char:'五',desc:'5'},{keys:['6','enam','keenam','liu','sixth'],char:'六',desc:'6'},{keys:['7','tujuh','ketujuh','qi','seventh'],char:'七',desc:'7'},{keys:['8','delapan','kedelapan','ba','eighth'],char:'八',desc:'8'},{keys:['9','sembilan','kesembilan','jiu','ninth'],char:'九',desc:'9'},{keys:['10','sepuluh','kesepuluh','shi','tenth'],char:'十',desc:'10'},{keys:['11','sebelas','kesebelas','shiyi'],char:'十一',desc:'11'},{keys:['12','duabelas','keduabelas','shier'],char:'十二',desc:'12'},{keys:['13','tigabelas','ketigabelas','shisan'],char:'十三',desc:'13'},{keys:['14','empatbelas','keempatbelas','shisi'],char:'十四',desc:'14'},{keys:['15','limabelas','kelimabelas','shiwu'],char:'十五',desc:'15'},{keys:['sulung','pertama','eldest','firstborn'],char:'长男',desc:'Sulung Lk'},{keys:['sulung','pertama','eldest','firstborn'],char:'长女',desc:'Sulung Pr'},{keys:['kedua','anak kedua','second'],char:'次男',desc:'Kedua Lk'},{keys:['kedua','anak kedua','second'],char:'次女',desc:'Kedua Pr'},{keys:['bungsu','kecil','youngest','last'],char:'小男',desc:'Bungsu Lk'},{keys:['bungsu','kecil','youngest','last'],char:'小女',desc:'Bungsu Pr'},{keys:['cucu','grandson','grandchild'],char:'孫',desc:'Cucu Lk'},{keys:['cucu','granddaughter','grandchild'],char:'孫女',desc:'Cucu Pr'},{keys:['cucu luar','maternal'],char:'外孫',desc:'Cucu Luar Lk'},{keys:['cucu luar','maternal'],char:'外孫女',desc:'Cucu Luar Pr'},{keys:['cicit','great grand'],char:'曾孫',desc:'Cicit Lk'},{keys:['cicit','great grand'],char:'曾孫女',desc:'Cicit Pr'},{keys:['keponakan','ponakan','nephew'],char:'姪子',desc:'Keponakan Lk'},{keys:['keponakan','ponakan','nephew'],char:'姪兒',desc:'Keponakan Lk'},{keys:['keponakan','ponakan','niece'],char:'姪女',desc:'Keponakan Pr'},{keys:['keponakan istri','ponakan istri'],char:'媳',desc:'Istri Keponakan'},{keys:['keponakan suami','ponakan suami'],char:'姪婿',desc:'Suami Keponakan'},{keys:['menantu','daughter in law','mantu'],char:'媳婦',desc:'Menantu Pr'},{keys:['menantu','son in law','mantu'],char:'女婿',desc:'Menantu Lk'},{keys:['angkat','adopsi','foster','adopted','yang'],char:'養',desc:'Angkat/Adopsi'},{keys:['kakak','abang','older brother','koko'],char:'兄',desc:'Kakak Lk'},{keys:['adik','younger brother','adi'],char:'弟',desc:'Adik Lk'},{keys:['kakak','teteh','older sister','cece'],char:'姐',desc:'Kakak Pr'},{keys:['adik','younger sister','meimei'],char:'妹',desc:'Adik Pr'},{keys:['suami','husband','laki','pria'],char:'夫',desc:'Suami'},{keys:['istri','wife','perempuan','wanita'],char:'妻',desc:'Istri'},{keys:['dan','dengan','and','with','penghubung','yu','plus'],char:'與',desc:'Dan/Dengan'},{keys:['sekeluarga','keluarga','rumah','whole family'],char:'闔家',desc:'Sekeluarga'},{keys:['laki-laki','lk','pria','male'],char:'男',desc:'Laki-laki'},{keys:['perempuan','pr','wanita','female'],char:'女',desc:'Perempuan'}
+  {keys:['1','satu','pertama','yi','first'],char:'一',desc:'1'},{keys:['2','dua','kedua','er','second'],char:'二',desc:'2'},{keys:['3','tiga','ketiga','san','third'],char:'三',desc:'3'},{keys:['4','empat','keempat','si','fourth'],char:'四',desc:'4'},{keys:['5','lima','kelima','wu','fifth'],char:'五',desc:'5'},{keys:['6','enam','keenam','liu','sixth'],char:'六',desc:'6'},{keys:['7','tujuh','ketujuh','qi','seventh'],char:'七',desc:'7'},{keys:['8','delapan','kedelapan','ba','eighth'],char:'八',desc:'8'},{keys:['9','sembilan','kesembilan','jiu','ninth'],char:'九',desc:'9'},{keys:['10','sepuluh','kesepuluh','shi','tenth'],char:'十',desc:'10'},{keys:['11','sebelas','kesebelas','shiyi'],char:'十一',desc:'11'},{keys:['12','duabelas','keduabelas','shier'],char:'十二',desc:'12'},{keys:['13','tigabelas','ketigabelas','shisan'],char:'十三',desc:'13'},{keys:['14','empatbelas','keempatbelas','shisi'],char:'十四',desc:'14'},{keys:['15','limabelas','kelimabelas','shiwu'],char:'十五',desc:'15'},{keys:['sulung','pertama','eldest','firstborn'],char:'长男',desc:'Sulung Lk'},{keys:['sulung','pertama','eldest','firstborn'],char:'长女',desc:'Sulung Pr'},{keys:['kedua','anak kedua','second'],char:'次男',desc:'Kedua Lk'},{keys:['kedua','anak kedua','second'],char:'次女',desc:'Kedua Pr'},{keys:['bungsu','kecil','youngest','last'],char:'小男',desc:'Bungsu Lk'},{keys:['bungsu','kecil','youngest','last'],char:'小女',desc:'Bungsu Pr'},{keys:['cucu','grandson','grandchild'],char:'孫',desc:'Cucu Lk'},{keys:['cucu','granddaughter','grandchild'],char:'孫女',desc:'Cucu Pr'},{keys:['cucu luar','maternal'],char:'外孫',desc:'Cucu Luar Lk'},{keys:['cucu luar','maternal'],char:'外孫女',desc:'Cucu Luar Pr'},{keys:['cicit','great grand'],char:'曾孫',desc:'Cicit Lk'},{keys:['cicit','great grand'],char:'曾孫女',desc:'Cicit Pr'},{keys:['keponakan','ponakan','nephew'],char:'姪子',desc:'Keponakan Lk'},{keys:['keponakan','ponakan','nephew'],char:'姪兒',desc:'Keponakan Lk'},{keys:['keponakan','ponakan','niece'],char:'姪女',desc:'Keponakan Pr'},{keys:['keponakan istri','ponakan istri'],char:'媳',desc:'Istri Keponakan'},{keys:['keponakan suami','ponakan suami'],char:'婿',desc:'Suami Keponakan'},{keys:['menantu','daughter in law','mantu'],char:'媳婦',desc:'Menantu Pr'},{keys:['menantu','son in law','mantu'],char:'女婿',desc:'Menantu Lk'},{keys:['angkat','adopsi','foster','adopted','yang'],char:'養',desc:'Angkat/Adopsi'},{keys:['kakak','abang','older brother','koko'],char:'兄',desc:'Kakak Lk'},{keys:['adik','younger brother','adi'],char:'弟',desc:'Adik Lk'},{keys:['kakak','teteh','older sister','cece'],char:'姐',desc:'Kakak Pr'},{keys:['adik','younger sister','meimei'],char:'妹',desc:'Adik Pr'},{keys:['suami','husband','laki','pria'],char:'夫',desc:'Suami'},{keys:['istri','wife','perempuan','wanita'],char:'妻',desc:'Istri'},{keys:['dan','dengan','and','with','penghubung','yu','plus'],char:'與',desc:'Dan/Dengan'},{keys:['sekeluarga','keluarga','rumah','whole family'],char:'闔家',desc:'Sekeluarga'},{keys:['laki-laki','lk','pria','male'],char:'男',desc:'Laki-laki'},{keys:['perempuan','pr','wanita','female'],char:'女',desc:'Perempuan'}
 ];
 
 const LUNAR_MONTHS = ['正','二','三','四','五','六','七','八','九','十','十一','十二'];
@@ -639,9 +673,14 @@ let selectedRowsForPrint = [];
 let searchHighlightIndex = -1;
 let inboxData = {}, mainData = {}, lastInboxCount = 0;
 
+// 🆕 Default print toggles
+let currentPrintToggles = {
+  year: true, month: true, day: true, marga: true, name: true, fu: true, pair: true, persembahan: true
+};
+
 function convertToPinyin(text){ try { if(!text || !text.trim()) return ''; if(typeof pinyinPro === 'undefined' || !pinyinPro.pinyin) return ''; return pinyinPro.pinyin(text, { toneType: 'symbol', type: 'array' }).join(' '); } catch(e) { return ''; } }
 
-const TRANSLATION_DICT = { '孝':'yang berbakti','长男':'anak sulung laki-laki','长女':'anak sulung perempuan','次男':'anak kedua laki-laki','次女':'anak kedua perempuan','小男':'anak bungsu laki-laki','小女':'anak bungsu perempuan','一':'anak pertama','二':'anak kedua','三':'anak ketiga','四':'anak keempat','五':'anak kelima','六':'anak keenam','七':'anak ketujuh','八':'anak kedelapan','九':'anak kesembilan','十':'anak kesepuluh','十一':'anak kesebelas','十二':'anak keduabelas','十三':'anak ketigabelas','十四':'anak keempatbelas','十五':'anak kelimabelas','男':'laki-laki','女':'perempuan','孫':'cucu laki-laki','孫女':'cucu perempuan','外孫':'cucu luar laki-laki','外孫女':'cucu luar perempuan','曾孫':'cicit laki-laki','曾孫女':'cicit perempuan','姪子':'keponakan laki-laki','兒':'keponakan laki-laki','女':'keponakan perempuan','媳':'istri keponakan','姪婿':'suami keponakan','媳婦':'menantu perempuan','女婿':'menantu laki-laki','養':'angkat/adopsi','兄':'kakak laki-laki','弟':'adik laki-laki','姐':'kakak perempuan','妹':'adik perempuan','夫':'suami','妻':'istri','與':'dan/dengan','闔家':'sekeluarga' };
+const TRANSLATION_DICT = { '孝':'yang berbakti','长男':'anak sulung laki-laki','长女':'anak sulung perempuan','次男':'anak kedua laki-laki','次女':'anak kedua perempuan','小男':'anak bungsu laki-laki','小女':'anak bungsu perempuan','一':'anak pertama','二':'anak kedua','三':'anak ketiga','四':'anak keempat','五':'anak kelima','六':'anak keenam','七':'anak ketujuh','八':'anak kedelapan','九':'anak kesembilan','十':'anak kesepuluh','十一':'anak kesebelas','十二':'anak keduabelas','十三':'anak ketigabelas','十四':'anak keempatbelas','十五':'anak kelimabelas','男':'laki-laki','女':'perempuan','孫':'cucu laki-laki','孫女':'cucu perempuan','外孫':'cucu luar laki-laki','外孫女':'cucu luar perempuan','曾孫':'cicit laki-laki','曾孫女':'cicit perempuan','姪子':'keponakan laki-laki','姪兒':'keponakan laki-laki','姪女':'keponakan perempuan','媳':'istri keponakan','婿':'suami keponakan','媳婦':'menantu perempuan','女婿':'menantu laki-laki','養':'angkat/adopsi','兄':'kakak laki-laki','弟':'adik laki-laki','姐':'kakak perempuan','妹':'adik perempuan','夫':'suami','妻':'istri','與':'dan/dengan','闔家':'sekeluarga' };
 
 function translatePersembahan(leftTitle, jenis){ try { if(!leftTitle || leftTitle === '孝') return ''; let text = leftTitle; let hasXiao = false; if(text.startsWith('孝')){ hasXiao = true; text = text.substring(1); } let translation = ''; let remaining = text; const sortedKeys = Object.keys(TRANSLATION_DICT).sort((a,b) => b.length - a.length); while(remaining.length > 0){ let matched = false; for(const key of sortedKeys){ if(remaining.startsWith(key)){ if(translation) translation += ' '; translation += TRANSLATION_DICT[key]; remaining = remaining.substring(key.length); matched = true; break; } } if(!matched){ const firstChar = remaining.charAt(0); if(translation) translation += ' '; translation += '[' + firstChar + ']'; remaining = remaining.substring(1); } } if(translation) translation = translation.charAt(0).toUpperCase() + translation.slice(1); const isMultiPeople = (jenis === 'typeD' || jenis === 'typeE' || jenis === 'typeF' || jenis === 'typeG' || jenis === 'typeH'); if(hasXiao && translation && !isMultiPeople) translation += ' yang berbakti'; else if(hasXiao && !translation && !isMultiPeople) translation = 'Yang berbakti'; return translation; } catch(e) { return ''; } }
 
@@ -649,30 +688,198 @@ function searchRelation(){ const query = document.getElementById('relationSearch
 function handleSearchKey(e){ const results = document.querySelectorAll('.tambahan-btn'); const query = document.getElementById('relationSearch').value.trim(); if(e.key === 'Tab' || e.key === 'ArrowRight' || e.key === 'ArrowDown'){ e.preventDefault(); if(results.length > 0){ searchHighlightIndex = (searchHighlightIndex + 1) % results.length; updateHighlight(results); } } else if(e.key === 'ArrowLeft' || e.key === 'ArrowUp'){ e.preventDefault(); if(results.length > 0){ searchHighlightIndex = (searchHighlightIndex - 1 + results.length) % results.length; updateHighlight(results); } } else if(e.key === ' ' || e.key === 'Spacebar' || e.key === 'Enter'){ e.preventDefault(); if(results.length > 0){ if(searchHighlightIndex >= 0 && searchHighlightIndex < results.length) results[searchHighlightIndex].click(); else results[0].click(); } else if(query){ addRelationChar(query); } } else if(e.key === 'Escape'){ e.preventDefault(); document.getElementById('relationSearch').value = ''; searchRelation(); } }
 function updateHighlight(results){ results.forEach((btn, i) => { btn.classList.toggle('highlighted', i === searchHighlightIndex); if(i === searchHighlightIndex) btn.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }); }
 function addRelationChar(char){ const row = batchRows.find(r => r.id === activeBatchRowId); if(!row) return; row.customTitle = (row.customTitle || '') + char; renderPersembahan(); updateBatchFromForm(); toast('✅ ' + char); document.getElementById('relationSearch').value = ''; document.getElementById('searchResults').innerHTML = '<div class="tambahan-empty-search">Ketik untuk mencari...</div>'; searchHighlightIndex = -1; document.getElementById('relationSearch').focus(); }
-function removeCharFromPersembahan(idx){ const row = batchRows.find(r => r.id === activeBatchRowId); if(!row) return; const chars = row.customTitle.split(''); chars.splice(idx, 1); row.customTitle = chars.join(''); renderPersembahan(); updateBatchFromForm(); toast('️ Dihapus 1'); }
+function removeCharFromPersembahan(idx){ const row = batchRows.find(r => r.id === activeBatchRowId); if(!row) return; const chars = row.customTitle.split(''); chars.splice(idx, 1); row.customTitle = chars.join(''); renderPersembahan(); updateBatchFromForm(); toast('🗑️ Dihapus 1'); }
 function clearPersembahan(){ const row = batchRows.find(r => r.id === activeBatchRowId); if(!row) return; row.customTitle = ''; renderPersembahan(); updateBatchFromForm(); toast('🗑️ Cleared'); }
 function renderPersembahan(){ const row = batchRows.find(r => r.id === activeBatchRowId); const display = document.getElementById('persembahanDisplay'); if(!row || !row.customTitle){ display.innerHTML = '<span class="persembahan-empty">Belum ada - ketik di bawah</span>'; return; } const chars = row.customTitle.split(''); display.innerHTML = chars.map((char, idx) => `<span class="persembahan-char" onclick="removeCharFromPersembahan(${idx})" title="Klik untuk hapus">${char}<span class="remove">✕</span></span>`).join(''); }
-function createNewRow(){ batchRowCounter++; const newRow = { id: batchRowCounter, y: getCurrentBaziYear(), m: '', d: '', t: 'typeA', na: '', mb: '', nb: '', nc: '', sd: '', nd1: '', nd2: '', se: '', ne1: '', ne2: '', sf: '許', gg: '', g1: '', g2: '', g3: '', rank: '', gender: '', customTitle: '', note: '' }; batchRows.push(newRow); activeBatchRowId = newRow.id; return newRow; }
+
+function createNewRow(){ 
+  batchRowCounter++; 
+  const newRow = { 
+    id: batchRowCounter, 
+    y: getCurrentBaziYear(), m: '', d: '', t: 'typeA', 
+    na: '', mb: '', nb: '', nc: '', sd: '', nd1: '', nd2: '', se: '', ne1: '', ne2: '', 
+    sf: '許', gg: '', g1: '', g2: '', g3: '', 
+    rank: '', gender: '', customTitle: '', note: '',
+    printToggles: { year: true, month: true, day: true, marga: true, name: true, fu: true, pair: true, persembahan: true }
+  }; 
+  batchRows.push(newRow); 
+  activeBatchRowId = newRow.id; 
+  return newRow; 
+}
+
 function refreshFormForActiveRow(){ renderBatchList(); loadBatchRowToForm(activeBatchRowId); updatePreview(); document.getElementById('formSection').style.display = 'block'; }
 function ensureOneRow(){ if(batchRows.length === 0){ createNewRow(); refreshFormForActiveRow(); } }
 function addBatchRow(){ createNewRow(); refreshFormForActiveRow(); toast('✅ Baris #' + activeBatchRowId + ' ditambahkan'); }
-function renderBatchList(){ const listEl = document.getElementById('batchList'); document.getElementById('batchCount').textContent = batchRows.length; document.getElementById('saveCount').textContent = batchRows.length; if(batchRows.length === 0){ listEl.innerHTML = '<div class="batch-empty">Klik ➕ untuk mulai</div>'; return; } listEl.innerHTML = batchRows.map(row => { const isActive = row.id === activeBatchRowId; const preview = getBatchRowPreview(row); const pinyin = getBatchRowPinyin(row); return `<div class="batch-item ${isActive ? 'active' : ''}" onclick="selectBatchRow(${row.id})"><div class="batch-item-info"><div class="batch-item-num">#${row.id} • ${row.y || ''} ${row.m || ''}${row.d || ''}</div><div class="batch-item-pinyin">${pinyin}</div><div class="batch-item-mandarin">${preview}</div></div><div class="batch-item-actions"><button class="b4" onclick="event.stopPropagation();deleteBatchRow(${row.id})" title="Hapus baris ini">🗑️</button></div></div>`; }).join(''); }
+
+function renderBatchList(){ const listEl = document.getElementById('batchList'); document.getElementById('batchCount').textContent = batchRows.length; document.getElementById('saveCount').textContent = batchRows.length; if(batchRows.length === 0){ listEl.innerHTML = '<div class="batch-empty">Klik ➕ untuk mulai</div>'; return; } listEl.innerHTML = batchRows.map(row => { const isActive = row.id === activeBatchRowId; const preview = getBatchRowPreview(row); const pinyin = getBatchRowPinyin(row); return `<div class="batch-item ${isActive ? 'active' : ''}" onclick="selectBatchRow(${row.id})"><div class="batch-item-info"><div class="batch-item-num">#${row.id} • ${row.y || ''} ${row.m || ''}${row.d || ''}</div><div class="batch-item-pinyin">${pinyin}</div><div class="batch-item-mandarin">${preview}</div></div><div class="batch-item-actions"><button class="b4" onclick="event.stopPropagation();deleteBatchRow(${row.id})" title="Hapus baris ini">️</button></div></div>`; }).join(''); }
+
 window.deleteBatchRow = function(id) { if(!confirm('Hapus baris ini?')) return; batchRows = batchRows.filter(r => r.id !== id); if(activeBatchRowId === id) { activeBatchRowId = batchRows.length > 0 ? batchRows[batchRows.length - 1].id : null; } renderBatchList(); if(activeBatchRowId) { loadBatchRowToForm(activeBatchRowId); updatePreview(); } else { clearPreview(); } toast('🗑️ Baris dihapus'); }
+
 function getBatchRowPinyin(row){ return convertToPinyin(getFullMandarinTextFromRow(row)) || ''; }
 function getBatchRowPreview(row){ let main = ''; if(row.t === 'typeA') main = '顯考' + (row.na || '?'); else if(row.t === 'typeB') main = '顯妣' + (row.mb || '?') + '府' + (row.nb || '?'); else if(row.t === 'typeC') main = '故' + (row.nc || '?'); else if(row.t === 'typeD') main = '顯祖考' + (row.na || '?'); else if(row.t === 'typeE') main = '顯祖妣' + (row.mb || '?') + '府' + (row.nb || '?'); else if(row.t === 'typeF') main = '祖妣考 ' + (row.sd || '?') + ' 府 ' + (row.nd2 || '?') + ' ' + (row.nd1 || '?'); else if(row.t === 'typeG') main = '顯妣考 ' + (row.se || '?') + ' 府 ' + (row.ne2 || '?') + ' ' + (row.ne1 || '?'); else if(row.t === 'typeH') main = '顯妣考 ' + (row.gg || '?') + ' 府 ' + (row.g2 || '?') + ' ' + (row.g1 || '?') + ' ' + (row.g3 || '?'); else if(row.t === 'typeI') main = (row.sf || '許') + '府歷代祖先'; const ct = row.customTitle || ''; const persembahan = '孝' + (row.rank || '') + (row.gender || '') + ct; const dateStr = row.m && row.d ? `${row.m}${row.d}` : ''; return `${dateStr ? dateStr + ' • ' : ''}${main} - ${persembahan}`; }
+
 function selectBatchRow(id){ activeBatchRowId = id; refreshFormForActiveRow(); }
-function loadBatchRowToForm(id){ const row = batchRows.find(r => r.id === id); if(!row) return; document.getElementById('editRowNum').textContent = id; initBaziDropdown(row.y); document.getElementById('batch_m_input').value = row.m || ''; document.getElementById('batch_d_input').value = row.d || ''; document.getElementById('batch_t').value = row.t; updateBatchNameFields(); const naInput = document.getElementById('batch_na'); if(naInput) naInput.value = row.na || ''; const mbInput = document.getElementById('batch_mb'); if(mbInput) mbInput.value = row.mb || ''; const nbInput = document.getElementById('batch_nb'); if(nbInput) nbInput.value = row.nb || ''; const ncInput = document.getElementById('batch_nc'); if(ncInput) ncInput.value = row.nc || ''; const sdInput = document.getElementById('batch_sd'); if(sdInput) sdInput.value = row.sd || ''; const nd1Input = document.getElementById('batch_nd1'); if(nd1Input) nd1Input.value = row.nd1 || ''; const nd2Input = document.getElementById('batch_nd2'); if(nd2Input) nd2Input.value = row.nd2 || ''; const seInput = document.getElementById('batch_se'); if(seInput) seInput.value = row.se || ''; const ne1Input = document.getElementById('batch_ne1'); if(ne1Input) ne1Input.value = row.ne1 || ''; const ne2Input = document.getElementById('batch_ne2'); if(ne2Input) ne2Input.value = row.ne2 || ''; const ggInput = document.getElementById('batch_gg'); if(ggInput) ggInput.value = row.gg || ''; const g1Input = document.getElementById('batch_g1'); if(g1Input) g1Input.value = row.g1 || ''; const g2Input = document.getElementById('batch_g2'); if(g2Input) g2Input.value = row.g2 || ''; const g3Input = document.getElementById('batch_g3'); if(g3Input) g3Input.value = row.g3 || ''; const sfInput = document.getElementById('batch_sf'); if(sfInput) sfInput.value = row.sf || '許'; document.getElementById('batch_rank').value = row.rank || ''; document.getElementById('batch_gender').value = row.gender || ''; document.getElementById('batch_note').value = row.note || ''; renderPersembahan(); updateCopyBox(); }
-function updateBatchFromForm(){ if(!activeBatchRowId) return; const row = batchRows.find(r => r.id === activeBatchRowId); if(!row) return; row.t = document.getElementById('batch_t').value; row.y = document.getElementById('batch_y').value; const naInput = document.getElementById('batch_na'); if(naInput) row.na = naInput.value || ''; const mbInput = document.getElementById('batch_mb'); if(mbInput) row.mb = mbInput.value || ''; const nbInput = document.getElementById('batch_nb'); if(nbInput) row.nb = nbInput.value || ''; const ncInput = document.getElementById('batch_nc'); if(ncInput) row.nc = ncInput.value || ''; const sdInput = document.getElementById('batch_sd'); if(sdInput) row.sd = sdInput.value || ''; const nd1Input = document.getElementById('batch_nd1'); if(nd1Input) row.nd1 = nd1Input.value || ''; const nd2Input = document.getElementById('batch_nd2'); if(nd2Input) row.nd2 = nd2Input.value || ''; const seInput = document.getElementById('batch_se'); if(seInput) row.se = seInput.value || ''; const ne1Input = document.getElementById('batch_ne1'); if(ne1Input) row.ne1 = ne1Input.value || ''; const ne2Input = document.getElementById('batch_ne2'); if(ne2Input) row.ne2 = ne2Input.value || ''; const ggInput = document.getElementById('batch_gg'); if(ggInput) row.gg = ggInput.value || ''; const g1Input = document.getElementById('batch_g1'); if(g1Input) row.g1 = g1Input.value || ''; const g2Input = document.getElementById('batch_g2'); if(g2Input) row.g2 = g2Input.value || ''; const g3Input = document.getElementById('batch_g3'); if(g3Input) row.g3 = g3Input.value || ''; const sfInput = document.getElementById('batch_sf'); if(sfInput) row.sf = sfInput.value || '許'; row.rank = document.getElementById('batch_rank').value; row.gender = document.getElementById('batch_gender').value; row.note = document.getElementById('batch_note').value; renderBatchList(); updatePreview(); updateCopyBox(); }
+
+function loadBatchRowToForm(id){ 
+  const row = batchRows.find(r => r.id === id); 
+  if(!row) return; 
+  document.getElementById('editRowNum').textContent = id; 
+  initBaziDropdown(row.y); 
+  document.getElementById('batch_m_input').value = row.m || ''; 
+  document.getElementById('batch_d_input').value = row.d || ''; 
+  document.getElementById('batch_t').value = row.t; 
+  updateBatchNameFields(); 
+  const naInput = document.getElementById('batch_na'); if(naInput) naInput.value = row.na || ''; 
+  const mbInput = document.getElementById('batch_mb'); if(mbInput) mbInput.value = row.mb || ''; 
+  const nbInput = document.getElementById('batch_nb'); if(nbInput) nbInput.value = row.nb || ''; 
+  const ncInput = document.getElementById('batch_nc'); if(ncInput) ncInput.value = row.nc || ''; 
+  const sdInput = document.getElementById('batch_sd'); if(sdInput) sdInput.value = row.sd || ''; 
+  const nd1Input = document.getElementById('batch_nd1'); if(nd1Input) nd1Input.value = row.nd1 || ''; 
+  const nd2Input = document.getElementById('batch_nd2'); if(nd2Input) nd2Input.value = row.nd2 || ''; 
+  const seInput = document.getElementById('batch_se'); if(seInput) seInput.value = row.se || ''; 
+  const ne1Input = document.getElementById('batch_ne1'); if(ne1Input) ne1Input.value = row.ne1 || ''; 
+  const ne2Input = document.getElementById('batch_ne2'); if(ne2Input) ne2Input.value = row.ne2 || ''; 
+  const ggInput = document.getElementById('batch_gg'); if(ggInput) ggInput.value = row.gg || ''; 
+  const g1Input = document.getElementById('batch_g1'); if(g1Input) g1Input.value = row.g1 || ''; 
+  const g2Input = document.getElementById('batch_g2'); if(g2Input) g2Input.value = row.g2 || ''; 
+  const g3Input = document.getElementById('batch_g3'); if(g3Input) g3Input.value = row.g3 || ''; 
+  const sfInput = document.getElementById('batch_sf'); if(sfInput) sfInput.value = row.sf || '許'; 
+  document.getElementById('batch_rank').value = row.rank || ''; 
+  document.getElementById('batch_gender').value = row.gender || ''; 
+  document.getElementById('batch_note').value = row.note || ''; 
+  
+  // 🆕 Load print toggles dari row
+  const toggles = row.printToggles || { year: true, month: true, day: true, marga: true, name: true, fu: true, pair: true, persembahan: true };
+  document.getElementById('toggle-year').checked = toggles.year;
+  document.getElementById('toggle-month').checked = toggles.month;
+  document.getElementById('toggle-day').checked = toggles.day;
+  document.getElementById('toggle-marga').checked = toggles.marga;
+  document.getElementById('toggle-name').checked = toggles.name;
+  document.getElementById('toggle-fu').checked = toggles.fu;
+  document.getElementById('toggle-pair').checked = toggles.pair;
+  document.getElementById('toggle-persembahan').checked = toggles.persembahan;
+  updatePrintToggles();
+  
+  renderPersembahan(); 
+  updateCopyBox(); 
+}
+
+function updateBatchFromForm(){ 
+  if(!activeBatchRowId) return; 
+  const row = batchRows.find(r => r.id === activeBatchRowId); 
+  if(!row) return; 
+  row.t = document.getElementById('batch_t').value; 
+  row.y = document.getElementById('batch_y').value; 
+  const naInput = document.getElementById('batch_na'); if(naInput) row.na = naInput.value || ''; 
+  const mbInput = document.getElementById('batch_mb'); if(mbInput) row.mb = mbInput.value || ''; 
+  const nbInput = document.getElementById('batch_nb'); if(nbInput) row.nb = nbInput.value || ''; 
+  const ncInput = document.getElementById('batch_nc'); if(ncInput) row.nc = ncInput.value || ''; 
+  const sdInput = document.getElementById('batch_sd'); if(sdInput) row.sd = sdInput.value || ''; 
+  const nd1Input = document.getElementById('batch_nd1'); if(nd1Input) row.nd1 = nd1Input.value || ''; 
+  const nd2Input = document.getElementById('batch_nd2'); if(nd2Input) row.nd2 = nd2Input.value || ''; 
+  const seInput = document.getElementById('batch_se'); if(seInput) row.se = seInput.value || ''; 
+  const ne1Input = document.getElementById('batch_ne1'); if(ne1Input) row.ne1 = ne1Input.value || ''; 
+  const ne2Input = document.getElementById('batch_ne2'); if(ne2Input) row.ne2 = ne2Input.value || ''; 
+  const ggInput = document.getElementById('batch_gg'); if(ggInput) row.gg = ggInput.value || ''; 
+  const g1Input = document.getElementById('batch_g1'); if(g1Input) row.g1 = g1Input.value || ''; 
+  const g2Input = document.getElementById('batch_g2'); if(g2Input) row.g2 = g2Input.value || ''; 
+  const g3Input = document.getElementById('batch_g3'); if(g3Input) row.g3 = g3Input.value || ''; 
+  const sfInput = document.getElementById('batch_sf'); if(sfInput) row.sf = sfInput.value || '許'; 
+  row.rank = document.getElementById('batch_rank').value; 
+  row.gender = document.getElementById('batch_gender').value; 
+  row.note = document.getElementById('batch_note').value; 
+  renderBatchList(); 
+  updatePreview(); 
+  updateCopyBox(); 
+}
+
 function updateBatchNameFields(){ const t = document.getElementById('batch_t').value; const container = document.getElementById('batch_nameFields'); let html = ''; if(t === 'typeA' || t === 'typeD'){ html = '<label>Nama Almarhum (Mandarin)</label><input type="text" id="batch_na" placeholder="Nama Mandarin..." oninput="updateBatchFromForm()">'; } else if(t === 'typeB' || t === 'typeE'){ html = '<div class="row"><div><label>Marga</label><input type="text" id="batch_mb" placeholder="Marga..." oninput="updateBatchFromForm()"></div><div><label>Nama</label><input type="text" id="batch_nb" placeholder="Nama..." oninput="updateBatchFromForm()"></div></div>'; } else if(t === 'typeC'){ html = '<label>Nama</label><input type="text" id="batch_nc" placeholder="Nama..." oninput="updateBatchFromForm()">'; } else if(t === 'typeF'){ html = '<label>Marga</label><input type="text" id="batch_sd" placeholder="Marga..." oninput="updateBatchFromForm()"><div class="row"><div><label>Nama Kakek</label><input type="text" id="batch_nd1" placeholder="Nama Kakek..." oninput="updateBatchFromForm()"></div><div><label>Nama Nenek</label><input type="text" id="batch_nd2" placeholder="Nama Nenek..." oninput="updateBatchFromForm()"></div></div>'; } else if(t === 'typeG'){ html = '<label>Marga</label><input type="text" id="batch_se" placeholder="Marga..." oninput="updateBatchFromForm()"><div class="row"><div><label>Nama Suami</label><input type="text" id="batch_ne1" placeholder="Nama Suami..." oninput="updateBatchFromForm()"></div><div><label>Nama Istri</label><input type="text" id="batch_ne2" placeholder="Nama Istri..." oninput="updateBatchFromForm()"></div></div>'; } else if(t === 'typeH'){ html = '<label>Marga</label><input type="text" id="batch_gg" placeholder="Marga..." oninput="updateBatchFromForm()"><div class="row"><div><label>Nama Suami</label><input type="text" id="batch_g1" placeholder="Suami..." oninput="updateBatchFromForm()"></div><div><label>Nama Istri 1</label><input type="text" id="batch_g2" placeholder="Istri 1..." oninput="updateBatchFromForm()"></div><div><label>Nama Istri 2</label><input type="text" id="batch_g3" placeholder="Istri 2..." oninput="updateBatchFromForm()"></div></div>'; } else if(t === 'typeI'){ html = '<label>Marga Leluhur</label><input type="text" id="batch_sf" placeholder="Marga (cth: 許)" oninput="updateBatchFromForm()" maxlength="2"><div style="background:rgba(251,191,36,0.1);border:1px dashed rgba(251,191,36,0.3);padding:8px;border-radius:6px;font-size:12px;color:#fbbf24;margin-top:5px;font-family:Arial,sans-serif">💡 Hasil: <b id="leluhurPreview" style="font-family:SimSun;font-size:15px">許府歷代祖先</b></div>'; } container.innerHTML = html; if(t === 'typeI') updateLeluhurPreview(); }
 function updateLeluhurPreview(){ const sf = document.getElementById('batch_sf')?.value || '許'; const preview = document.getElementById('leluhurPreview'); if(preview) preview.textContent = sf + '府歷代祖先'; }
 
-async function saveAllBatch(){ let customerName = document.getElementById('customerName').value.trim(); if(!customerName){ customerName = getAutoCustomerName(); document.getElementById('customerName').value = customerName; } const validRows = batchRows.filter(row => { const namaMandarin = getFullMandarinTextFromRow(row).trim(); return namaMandarin.length > 0; }); if(validRows.length === 0){ toast('⚠️ Tidak ada data valid! Isi nama almarhum dulu.'); return; } toast('⏳ Menyimpan ke Arsip...'); try { const qMain = window.firebaseQuery(window.firebaseMainCollection, window.firebaseOrderBy("createdAt", "desc")); const snapMain = await window.firebaseGetDocs(qMain); const existingData = []; snapMain.forEach((doc) => { existingData.push(doc.data()); }); const rowsToSave = []; const skippedRows = []; for(const row of validRows) { const namaMandarin = getFullMandarinTextFromRow(row).trim(); const isDuplicate = existingData.some(d => d.name === namaMandarin && d.customerName === customerName && d.type === row.t && d.y === row.y && d.m === row.m && d.d === row.d && d.customTitle === row.customTitle); if(isDuplicate) { skippedRows.push(namaMandarin); } else { rowsToSave.push(row); } } if(rowsToSave.length === 0){ alert('⚠️ Semua data sudah ada di Arsip! Tidak ada yang disimpan.'); return; } let savedCount = 0; for(const row of rowsToSave) { const namaMandarin = getFullMandarinTextFromRow(row).trim(); await window.firebaseAddDoc(window.firebaseMainCollection, { customerName: customerName, name: namaMandarin, pinyin: convertToPinyin(namaMandarin), note: row.note || '', type: row.t, y: row.y, m: row.m, d: row.d, rank: row.rank, gender: row.gender, customTitle: row.customTitle, createdAt: window.firebaseServerTimestamp() }); savedCount++; } batchRows = []; activeBatchRowId = null; batchRowCounter = 0; document.getElementById('customerName').value = ''; ensureOneRow(); clearPreview(); updateCopyBox(); let msg = `✅ Berhasil simpan ${savedCount} data!`; if(skippedRows.length > 0) msg += `\n\n⚠️ ${skippedRows.length} data dilewati (sudah ada): ${skippedRows.join(', ')}`; alert(msg); } catch(e) { toast('❌ Gagal simpan: ' + e.message); } }
+// 🆕 FUNGSI PENGATURAN CETAK
+function updatePrintToggles() {
+  const toggles = {
+    year: document.getElementById('toggle-year').checked,
+    month: document.getElementById('toggle-month').checked,
+    day: document.getElementById('toggle-day').checked,
+    marga: document.getElementById('toggle-marga').checked,
+    name: document.getElementById('toggle-name').checked,
+    fu: document.getElementById('toggle-fu').checked,
+    pair: document.getElementById('toggle-pair').checked,
+    persembahan: document.getElementById('toggle-persembahan').checked
+  };
+  currentPrintToggles = toggles;
+  
+  // Update visual state
+  ['year','month','day','marga','name','fu','pair','persembahan'].forEach(key => {
+    const item = document.getElementById(`toggle-${key}-item`);
+    if (item) {
+      if (toggles[key]) item.classList.remove('off');
+      else item.classList.add('off');
+    }
+  });
+  
+  // Simpan ke row aktif
+  if (activeBatchRowId) {
+    const row = batchRows.find(r => r.id === activeBatchRowId);
+    if (row) row.printToggles = toggles;
+  }
+}
+
+function toggleAllPrint(state) {
+  ['year','month','day','marga','name','fu','pair','persembahan'].forEach(key => {
+    document.getElementById(`toggle-${key}`).checked = state;
+  });
+  updatePrintToggles();
+  updatePreview();
+  toast(state ? '✅ Semua bagian aktif' : '⏸️ Semua bagian nonaktif');
+}
+
+async function saveAllBatch(){ 
+  let customerName = document.getElementById('customerName').value.trim(); 
+  if(!customerName){ customerName = getAutoCustomerName(); document.getElementById('customerName').value = customerName; } 
+  const validRows = batchRows.filter(row => { const namaMandarin = getFullMandarinTextFromRow(row).trim(); return namaMandarin.length > 0; }); 
+  if(validRows.length === 0){ toast('⚠️ Tidak ada data valid! Isi nama almarhum dulu.'); return; } 
+  toast('⏳ Menyimpan ke Arsip...'); 
+  try { 
+    const qMain = window.firebaseQuery(window.firebaseMainCollection, window.firebaseOrderBy("createdAt", "desc")); 
+    const snapMain = await window.firebaseGetDocs(qMain); 
+    const existingData = []; 
+    snapMain.forEach((doc) => { existingData.push(doc.data()); }); 
+    const rowsToSave = []; 
+    const skippedRows = []; 
+    for(const row of validRows) { 
+      const namaMandarin = getFullMandarinTextFromRow(row).trim(); 
+      const isDuplicate = existingData.some(d => d.name === namaMandarin && d.customerName === customerName && d.type === row.t && d.y === row.y && d.m === row.m && d.d === row.d && d.customTitle === row.customTitle); 
+      if(isDuplicate) { skippedRows.push(namaMandarin); } 
+      else { rowsToSave.push(row); } 
+    } 
+    if(rowsToSave.length === 0){ alert('⚠️ Semua data sudah ada di Arsip! Tidak ada yang disimpan.'); return; } 
+    let savedCount = 0; 
+    for(const row of rowsToSave) { 
+      const namaMandarin = getFullMandarinTextFromRow(row).trim(); 
+      await window.firebaseAddDoc(window.firebaseMainCollection, { 
+        customerName: customerName, name: namaMandarin, pinyin: convertToPinyin(namaMandarin), 
+        note: row.note || '', type: row.t, y: row.y, m: row.m, d: row.d, 
+        rank: row.rank, gender: row.gender, customTitle: row.customTitle, 
+        createdAt: window.firebaseServerTimestamp() 
+      }); 
+      savedCount++; 
+    } 
+    batchRows = []; activeBatchRowId = null; batchRowCounter = 0; 
+    document.getElementById('customerName').value = ''; 
+    ensureOneRow(); clearPreview(); updateCopyBox(); 
+    let msg = `✅ Berhasil simpan ${savedCount} data!`; 
+    if(skippedRows.length > 0) msg += `\n\n️ ${skippedRows.length} data dilewati (sudah ada): ${skippedRows.join(', ')}`; 
+    alert(msg); 
+  } catch(e) { toast('❌ Gagal simpan: ' + e.message); } 
+}
 
 function getFullMandarinTextFromRow(row){ if(row.t === 'typeA' || row.t === 'typeD') return row.na || ''; if(row.t === 'typeB' || row.t === 'typeE') return ((row.mb || '') + ' ' + (row.nb || '')).trim(); if(row.t === 'typeC') return row.nc || ''; if(row.t === 'typeF') return ((row.sd || '') + ' ' + (row.nd1 || '') + ' ' + (row.nd2 || '')).trim(); if(row.t === 'typeG') return ((row.se || '') + ' ' + (row.ne1 || '') + ' ' + (row.ne2 || '')).trim(); if(row.t === 'typeH') return ((row.gg || '') + ' ' + (row.g1 || '') + ' ' + (row.g2 || '') + ' ' + (row.g3 || '')).trim(); if(row.t === 'typeI') return (row.sf || '許') + '府歷代祖先'; return ''; }
 function getLeftTitleFromRow(row){ const ct = (row.customTitle || '').trim(); return '孝' + (row.rank || '') + (row.gender || '') + ct; }
 function calculatePositions(margaLength, isPrint = false) { const baseMargaTop = isPrint ? 222 : 32; const charHeight = 11; const fuTop = baseMargaTop + (margaLength * charHeight) + 2; const nameTop = fuTop + charHeight + 4; return { fuTop, nameTop }; }
 
-// 🆕 FUNGSI UPDATE PREVIEW YANG DIPERBAIKI
+// 🆕 UPDATE PREVIEW DENGAN TOGGLE
 function updatePreview(){ 
   const pinyinEl = document.getElementById('previewPinyin'); 
   const transEl = document.getElementById('previewTranslation'); 
@@ -709,9 +916,12 @@ function updatePreview(){
   const row = batchRows.find(r => r.id === activeBatchRowId); 
   if(!row) return; 
   
-  t1.textContent = row.y || ''; 
-  t2.textContent = row.m || ''; 
-  t3.textContent = row.d || ''; 
+  const toggles = row.printToggles || currentPrintToggles;
+  
+  // 🆕 Cek toggle untuk tahun/bulan/tanggal
+  if (toggles.year) t1.textContent = row.y || ''; 
+  if (toggles.month) t2.textContent = row.m || ''; 
+  if (toggles.day) t3.textContent = row.d || ''; 
   
   let margaText = ''; 
   if(row.t === 'typeF') margaText = row.sd || ''; 
@@ -721,98 +931,61 @@ function updatePreview(){
   const pos = calculatePositions(margaText.length, false); 
   
   if(row.t === 'typeA'){ 
-    m.textContent = '顯考' + (row.na || ''); 
-    m.classList.remove('h'); 
+    if (toggles.name) { m.textContent = '顯考' + (row.na || ''); m.classList.remove('h'); }
   } else if(row.t === 'typeB'){ 
-    m.textContent = '顯妣' + (row.mb || '') + '府' + (row.nb || ''); 
-    m.classList.remove('h'); 
+    if (toggles.name) { m.textContent = '顯妣' + (row.mb || '') + '府' + (row.nb || ''); m.classList.remove('h'); }
   } else if(row.t === 'typeC'){ 
-    m.textContent = '故' + (row.nc || ''); 
-    m.classList.remove('h'); 
+    if (toggles.name) { m.textContent = '故' + (row.nc || ''); m.classList.remove('h'); }
   } else if(row.t === 'typeD'){ 
-    m.textContent = '顯祖考' + (row.na || ''); 
-    m.classList.remove('h'); 
+    if (toggles.name) { m.textContent = '顯祖考' + (row.na || ''); m.classList.remove('h'); }
   } else if(row.t === 'typeE'){ 
-    m.textContent = '顯祖妣' + (row.mb || '') + '府' + (row.nb || ''); 
-    m.classList.remove('h'); 
+    if (toggles.name) { m.textContent = '顯祖妣' + (row.mb || '') + '府' + (row.nb || ''); m.classList.remove('h'); }
   } else if(row.t === 'typeF'){ 
-    // 🆕 typeF: 祖 (vertical) + 考 (horizontal, center, dengan jarak)
-    m.textContent = '祖';
-    m.classList.remove('h');
-    hPair.textContent = '妣考';
-    hPair.style.top = '22mm'; // Jarak dari 祖
-    hPair.classList.remove('h');
-    marga.textContent = margaText; 
-    fu.textContent = '府'; 
-    fu.style.top = pos.fuTop + 'mm'; 
-    m2.textContent = row.nd2 || ''; 
-    m3.textContent = row.nd1 || ''; 
-    m2.style.top = pos.nameTop + 'mm'; 
-    m3.style.top = pos.nameTop + 'mm'; 
-    marga.classList.remove('h'); 
-    fu.classList.remove('h'); 
-    m2.classList.remove('h'); 
-    m3.classList.remove('h'); 
+    if (toggles.name) { m.textContent = '祖'; m.classList.remove('h'); }
+    if (toggles.pair) { hPair.textContent = '妣考'; hPair.style.top = '22mm'; hPair.classList.remove('h'); }
+    if (toggles.marga) { marga.textContent = margaText; marga.classList.remove('h'); }
+    if (toggles.fu) { fu.textContent = '府'; fu.style.top = pos.fuTop + 'mm'; fu.classList.remove('h'); }
+    if (toggles.name) {
+      m2.textContent = row.nd2 || ''; m3.textContent = row.nd1 || ''; 
+      m2.style.top = pos.nameTop + 'mm'; m3.style.top = pos.nameTop + 'mm'; 
+      m2.classList.remove('h'); m3.classList.remove('h'); 
+    }
   } else if(row.t === 'typeG'){ 
-    // 🆕 typeG: 顯 (vertical) + 考 (horizontal, center, dengan jarak)
-    mE0.textContent = '顯';
-    mE0.classList.remove('h');
-    hPair.textContent = '妣考';
-    hPair.style.top = '22mm'; // Jarak dari 顯
-    hPair.classList.remove('h');
-    marga.textContent = margaText; 
-    fu.textContent = '府'; 
-    fu.style.top = pos.fuTop + 'mm'; 
-    mE1.textContent = row.ne2 || ''; 
-    mE2.textContent = row.ne1 || ''; 
-    mE1.style.top = pos.nameTop + 'mm'; 
-    mE2.style.top = pos.nameTop + 'mm'; 
-    marga.classList.remove('h'); 
-    fu.classList.remove('h'); 
-    mE1.classList.remove('h'); 
-    mE2.classList.remove('h'); 
+    if (toggles.name) { mE0.textContent = '顯'; mE0.classList.remove('h'); }
+    if (toggles.pair) { hPair.textContent = '妣考'; hPair.style.top = '22mm'; hPair.classList.remove('h'); }
+    if (toggles.marga) { marga.textContent = margaText; marga.classList.remove('h'); }
+    if (toggles.fu) { fu.textContent = '府'; fu.style.top = pos.fuTop + 'mm'; fu.classList.remove('h'); }
+    if (toggles.name) {
+      mE1.textContent = row.ne2 || ''; mE2.textContent = row.ne1 || ''; 
+      mE1.style.top = pos.nameTop + 'mm'; mE2.style.top = pos.nameTop + 'mm'; 
+      mE1.classList.remove('h'); mE2.classList.remove('h'); 
+    }
   } else if(row.t === 'typeH'){ 
-    // 🆕 typeH: 顯 (vertical) + 妣考 (horizontal, center, dengan jarak)
-    g0.textContent = '顯';
-    g0.classList.remove('h');
-    hPair.textContent = '妣考';
-    hPair.style.top = '22mm'; // Jarak dari 顯
-    hPair.classList.remove('h');
-    gm.textContent = margaText; 
-    gfu.textContent = '府'; 
-    gfu.style.top = pos.fuTop + 'mm'; 
-    g1.textContent = row.g2 || ''; 
-    g2.textContent = row.g1 || ''; 
-    g3.textContent = row.g3 || ''; 
-    g1.style.top = pos.nameTop + 'mm'; 
-    g2.style.top = pos.nameTop + 'mm'; 
-    g3.style.top = pos.nameTop + 'mm'; 
-    gm.classList.remove('h'); 
-    gfu.classList.remove('h'); 
-    g1.classList.remove('h'); 
-    g2.classList.remove('h'); 
-    g3.classList.remove('h'); 
+    if (toggles.name) { g0.textContent = '顯'; g0.classList.remove('h'); }
+    if (toggles.pair) { hPair.textContent = '妣考'; hPair.style.top = '22mm'; hPair.classList.remove('h'); }
+    if (toggles.marga) { gm.textContent = margaText; gm.classList.remove('h'); }
+    if (toggles.fu) { gfu.textContent = '府'; gfu.style.top = pos.fuTop + 'mm'; gfu.classList.remove('h'); }
+    if (toggles.name) {
+      g1.textContent = row.g2 || ''; g2.textContent = row.g1 || ''; g3.textContent = row.g3 || ''; 
+      g1.style.top = pos.nameTop + 'mm'; g2.style.top = pos.nameTop + 'mm'; g3.style.top = pos.nameTop + 'mm'; 
+      g1.classList.remove('h'); g2.classList.remove('h'); g3.classList.remove('h'); 
+    }
   } else if(row.t === 'typeI'){ 
-    m.textContent = (row.sf || '許') + '府歷代祖先'; 
-    m.classList.remove('h'); 
+    if (toggles.name) { m.textContent = (row.sf || '許') + '府歷代祖先'; m.classList.remove('h'); }
   } 
   
-  const leftTitle = getLeftTitleFromRow(row); 
-  k.textContent = leftTitle; 
-  if(leftTitle && leftTitle !== '孝') k.classList.remove('h'); 
+  if (toggles.persembahan) {
+    const leftTitle = getLeftTitleFromRow(row); 
+    k.textContent = leftTitle; 
+    if(leftTitle && leftTitle !== '孝') k.classList.remove('h'); 
+  }
   
   const checked = document.getElementById('showPinyinToggle').checked; 
   const fullText = getFullMandarinTextFromRow(row); 
   const py = convertToPinyin(fullText); 
-  const translation = translatePersembahan(leftTitle, row.t); 
-  if(checked && py){ 
-    pinyinEl.textContent = py; 
-    pinyinEl.classList.remove('hidden'); 
-  } 
-  if(checked && translation){ 
-    transEl.textContent = translation; 
-    transEl.classList.remove('hidden'); 
-  } 
+  const translation = translatePersembahan(getLeftTitleFromRow(row), row.t); 
+  if(checked && py){ pinyinEl.textContent = py; pinyinEl.classList.remove('hidden'); } 
+  if(checked && translation){ transEl.textContent = translation; transEl.classList.remove('hidden'); } 
 }
 
 function clearPreview(){ 
@@ -838,7 +1011,7 @@ function cancelPrint(){ document.getElementById('printConfirmOverlay').classList
 document.getElementById('printConfirmOverlay').addEventListener('click', function(e){ if(e.target === this) cancelPrint(); });
 function askAndPrintCurrentRow(){ if(!activeBatchRowId){ toast('⚠️ Pilih baris!'); return; } const row = batchRows.find(r => r.id === activeBatchRowId); if(!row){ toast('⚠️ Baris tidak ditemukan!'); return; } askPrintOptions((includePinyin) => { const queue = document.getElementById('printQueue'); queue.innerHTML = ''; queue.appendChild(generatePrintItem(row, includePinyin)); setTimeout(() => { window.print(); setTimeout(() => { queue.innerHTML = ''; }, 500); }, 100); }); }
 
-// 🆕 FUNGSI GENERATE PRINT ITEM YANG DIPERBAIKI
+// 🆕 GENERATE PRINT ITEM DENGAN TOGGLE
 function generatePrintItem(row, includePinyin){ 
   const item = document.createElement('div'); 
   item.className = 'print-item'; 
@@ -850,21 +1023,49 @@ function generatePrintItem(row, includePinyin){
   else if(t === 'typeH') margaText = row.gg || ''; 
   const pos = calculatePositions(margaText.length, true); 
   
-  if(t === 'typeA') mainContent = '<div class="c m">顯考' + (row.na || '') + '</div>'; 
-  else if(t === 'typeB') mainContent = '<div class="c m">顯妣' + (row.mb || '') + '府' + (row.nb || '') + '</div>'; 
-  else if(t === 'typeC') mainContent = '<div class="c m">故' + (row.nc || '') + '</div>'; 
-  else if(t === 'typeD') mainContent = '<div class="c m">顯祖考' + (row.na || '') + '</div>'; 
-  else if(t === 'typeE') mainContent = '<div class="c m">顯祖妣' + (row.mb || '') + '府' + (row.nb || '') + '</div>'; 
-  else if(t === 'typeF'){ 
-    // 🆕 typeF: 祖 (vertical) + 妣考 (horizontal pair, center)
-    mainContent = '<div class="c m">祖</div><div class="h-pair" style="top:212mm">妣考</div><div class="c marga">' + margaText + '</div><div class="c fu" style="top:' + pos.fuTop + 'mm">府</div><div class="c m2" style="top:' + pos.nameTop + 'mm">' + (row.nd2 || '') + '</div><div class="c m3" style="top:' + pos.nameTop + 'mm">' + (row.nd1 || '') + '</div>'; 
+  const toggles = row.printToggles || currentPrintToggles;
+  
+  if(t === 'typeA') {
+    if (toggles.name) mainContent += '<div class="c m">顯考' + (row.na || '') + '</div>'; 
+  } else if(t === 'typeB') {
+    if (toggles.name) mainContent += '<div class="c m">顯妣' + (row.mb || '') + '府' + (row.nb || '') + '</div>'; 
+  } else if(t === 'typeC') {
+    if (toggles.name) mainContent += '<div class="c m">故' + (row.nc || '') + '</div>'; 
+  } else if(t === 'typeD') {
+    if (toggles.name) mainContent += '<div class="c m">顯祖考' + (row.na || '') + '</div>'; 
+  } else if(t === 'typeE') {
+    if (toggles.name) mainContent += '<div class="c m">顯祖妣' + (row.mb || '') + '府' + (row.nb || '') + '</div>'; 
+  } else if(t === 'typeF'){ 
+    if (toggles.name) mainContent += '<div class="c m">祖</div>';
+    if (toggles.pair) mainContent += '<div class="h-pair" style="top:212mm">妣考</div>';
+    if (toggles.marga) mainContent += '<div class="c marga">' + margaText + '</div>';
+    if (toggles.fu) mainContent += '<div class="c fu" style="top:' + pos.fuTop + 'mm">府</div>';
+    if (toggles.name) {
+      mainContent += '<div class="c m2" style="top:' + pos.nameTop + 'mm">' + (row.nd2 || '') + '</div>';
+      mainContent += '<div class="c m3" style="top:' + pos.nameTop + 'mm">' + (row.nd1 || '') + '</div>';
+    }
   } else if(t === 'typeG'){ 
-    // 🆕 typeG: 顯 (vertical) + 妣考 (horizontal pair, center)
-    mainContent = '<div class="c mE0">顯</div><div class="h-pair" style="top:212mm">妣考</div><div class="c marga">' + margaText + '</div><div class="c fu" style="top:' + pos.fuTop + 'mm">府</div><div class="c mE1" style="top:' + pos.nameTop + 'mm">' + (row.ne2 || '') + '</div><div class="c mE2" style="top:' + pos.nameTop + 'mm">' + (row.ne1 || '') + '</div>'; 
+    if (toggles.name) mainContent += '<div class="c mE0">顯</div>';
+    if (toggles.pair) mainContent += '<div class="h-pair" style="top:212mm">妣考</div>';
+    if (toggles.marga) mainContent += '<div class="c marga">' + margaText + '</div>';
+    if (toggles.fu) mainContent += '<div class="c fu" style="top:' + pos.fuTop + 'mm">府</div>';
+    if (toggles.name) {
+      mainContent += '<div class="c mE1" style="top:' + pos.nameTop + 'mm">' + (row.ne2 || '') + '</div>';
+      mainContent += '<div class="c mE2" style="top:' + pos.nameTop + 'mm">' + (row.ne1 || '') + '</div>';
+    }
   } else if(t === 'typeH'){ 
-    // 🆕 typeH: 顯 (vertical) + 妣考 (horizontal pair, center)
-    mainContent = '<div class="c g0">顯</div><div class="h-pair" style="top:212mm">妣考</div><div class="c gm">' + margaText + '</div><div class="c gfu" style="top:' + pos.fuTop + 'mm">府</div><div class="c g1" style="top:' + pos.nameTop + 'mm">' + (row.g2 || '') + '</div><div class="c g2" style="top:' + pos.nameTop + 'mm">' + (row.g1 || '') + '</div><div class="c g3" style="top:' + pos.nameTop + 'mm">' + (row.g3 || '') + '</div>'; 
-  } else if(t === 'typeI') mainContent = '<div class="c m">' + (row.sf || '許') + '府歷代祖先</div>'; 
+    if (toggles.name) mainContent += '<div class="c g0">顯</div>';
+    if (toggles.pair) mainContent += '<div class="h-pair" style="top:212mm">妣考</div>';
+    if (toggles.marga) mainContent += '<div class="c gm">' + margaText + '</div>';
+    if (toggles.fu) mainContent += '<div class="c gfu" style="top:' + pos.fuTop + 'mm">府</div>';
+    if (toggles.name) {
+      mainContent += '<div class="c g1" style="top:' + pos.nameTop + 'mm">' + (row.g2 || '') + '</div>';
+      mainContent += '<div class="c g2" style="top:' + pos.nameTop + 'mm">' + (row.g1 || '') + '</div>';
+      mainContent += '<div class="c g3" style="top:' + pos.nameTop + 'mm">' + (row.g3 || '') + '</div>';
+    }
+  } else if(t === 'typeI') {
+    if (toggles.name) mainContent += '<div class="c m">' + (row.sf || '許') + '府歷代祖先</div>';
+  }
   
   const leftTitle = getLeftTitleFromRow(row); 
   const fullText = getFullMandarinTextFromRow(row); 
@@ -873,14 +1074,22 @@ function generatePrintItem(row, includePinyin){
   const pyClass = (includePinyin && py) ? 'corner-pinyin' : 'corner-pinyin hidden'; 
   const trClass = (includePinyin && translation) ? 'corner-translation' : 'corner-translation hidden'; 
   
-  item.innerHTML = '<div class="' + pyClass + '">' + (py || '') + '</div><div class="' + trClass + '">' + (translation || '') + '</div><div class="c t1">' + (row.y || '') + '</div><div class="c t2">' + (row.m || '') + '</div><div class="c t3">' + (row.d || '') + '</div>' + mainContent + '<div class="c k">' + leftTitle + '</div>'; 
+  let timeContent = '';
+  if (toggles.year) timeContent += '<div class="c t1">' + (row.y || '') + '</div>';
+  if (toggles.month) timeContent += '<div class="c t2">' + (row.m || '') + '</div>';
+  if (toggles.day) timeContent += '<div class="c t3">' + (row.d || '') + '</div>';
+  
+  let persembahanContent = '';
+  if (toggles.persembahan) persembahanContent = '<div class="c k">' + leftTitle + '</div>';
+  
+  item.innerHTML = '<div class="' + pyClass + '">' + (py || '') + '</div><div class="' + trClass + '">' + (translation || '') + '</div>' + timeContent + mainContent + persembahanContent; 
   return item; 
 }
 
-function openSelectPrintModal(){ if(batchRows.length === 0){ toast('⚠️ Tambah baris!'); return; } const html = batchRows.map(row => { const isChecked = selectedRowsForPrint.includes(row.id); const pinyin = getBatchRowPinyin(row); const preview = getBatchRowPreview(row); return `<div style="padding:10px;border:1px solid rgba(251,191,36,0.2);margin:5px;border-radius:6px;cursor:pointer;background:${isChecked?'rgba(59,130,246,0.2)':'rgba(0,0,0,0.2)'}" onclick="toggleRow(${row.id})"><input type="checkbox" ${isChecked?'checked':''} onclick="event.stopPropagation();toggleRow(${row.id})"><div style="font-size:13px;color:#60a5fa;font-family:Arial,sans-serif">${pinyin}</div><div style="font-size:14px;color:#e0e0e0;font-family:SimSun,KaiTi,serif">${preview}</div></div>`; }).join(''); const oldModal = document.getElementById('selectPrintModal'); if(oldModal) oldModal.remove(); const modal = document.createElement('div'); modal.id = 'selectPrintModal'; modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:3000;display:flex;justify-content:center;align-items:center;padding:25px;backdrop-filter:blur(10px)'; modal.innerHTML = `<div style="background:rgba(30,30,50,0.95);backdrop-filter:blur(20px);border-radius:15px;padding:25px;max-width:550px;width:100%;max-height:80vh;overflow-y:auto;position:relative;border:1px solid rgba(251,191,36,0.2);animation:fadeIn 0.3s ease-out"><h3 style="color:#fbbf24;margin-bottom:12px;font-size:18px">🖨️ Pilih Data untuk Dicetak</h3><div>${html}</div><div style="display:flex;gap:10px;margin-top:12px"><button class="b5" onclick="closeSelectPrintModal()" style="font-size:15px;padding:12px">Batal</button><button class="b11" onclick="doTempPrint()" style="font-size:15px;padding:12px">🖨️ Langsung Cetak</button></div></div>`; document.body.appendChild(modal); modal.onclick = (e) => { if(e.target === modal) closeSelectPrintModal(); }; }
+function openSelectPrintModal(){ if(batchRows.length === 0){ toast('⚠️ Tambah baris!'); return; } const html = batchRows.map(row => { const isChecked = selectedRowsForPrint.includes(row.id); const pinyin = getBatchRowPinyin(row); const preview = getBatchRowPreview(row); return `<div style="padding:10px;border:1px solid rgba(251,191,36,0.2);margin:5px;border-radius:6px;cursor:pointer;background:${isChecked?'rgba(59,130,246,0.2)':'rgba(0,0,0,0.2)'}" onclick="toggleRow(${row.id})"><input type="checkbox" ${isChecked?'checked':''} onclick="event.stopPropagation();toggleRow(${row.id})"><div style="font-size:13px;color:#60a5fa;font-family:Arial,sans-serif">${pinyin}</div><div style="font-size:14px;color:#e0e0e0;font-family:SimSun,KaiTi,serif">${preview}</div></div>`; }).join(''); const oldModal = document.getElementById('selectPrintModal'); if(oldModal) oldModal.remove(); const modal = document.createElement('div'); modal.id = 'selectPrintModal'; modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:3000;display:flex;justify-content:center;align-items:center;padding:25px;backdrop-filter:blur(10px)'; modal.innerHTML = `<div style="background:rgba(30,30,50,0.95);backdrop-filter:blur(20px);border-radius:15px;padding:25px;max-width:550px;width:100%;max-height:80vh;overflow-y:auto;position:relative;border:1px solid rgba(251,191,36,0.2);animation:fadeIn 0.3s ease-out"><h3 style="color:#fbbf24;margin-bottom:12px;font-size:18px">️ Pilih Data untuk Dicetak</h3><div>${html}</div><div style="display:flex;gap:10px;margin-top:12px"><button class="b5" onclick="closeSelectPrintModal()" style="font-size:15px;padding:12px">Batal</button><button class="b11" onclick="doTempPrint()" style="font-size:15px;padding:12px">🖨️ Langsung Cetak</button></div></div>`; document.body.appendChild(modal); modal.onclick = (e) => { if(e.target === modal) closeSelectPrintModal(); }; }
 function closeSelectPrintModal(){ const modal = document.getElementById('selectPrintModal'); if(modal) modal.remove(); }
 function toggleRow(id){ const idx = selectedRowsForPrint.indexOf(id); if(idx >= 0) selectedRowsForPrint.splice(idx, 1); else selectedRowsForPrint.push(id); openSelectPrintModal(); }
-function doTempPrint(){ if(selectedRowsForPrint.length === 0){ toast('️ Pilih minimal 1!'); return; } closeSelectPrintModal(); askPrintOptions((includePinyin) => { const rowsToPrint = batchRows.filter(r => selectedRowsForPrint.includes(r.id)); const queue = document.getElementById('printQueue'); queue.innerHTML = ''; rowsToPrint.forEach(row => { queue.appendChild(generatePrintItem(row, includePinyin)); }); setTimeout(() => { window.print(); setTimeout(() => { queue.innerHTML = ''; }, 500); }, 100); }); }
+function doTempPrint(){ if(selectedRowsForPrint.length === 0){ toast('⚠️ Pilih minimal 1!'); return; } closeSelectPrintModal(); askPrintOptions((includePinyin) => { const rowsToPrint = batchRows.filter(r => selectedRowsForPrint.includes(r.id)); const queue = document.getElementById('printQueue'); queue.innerHTML = ''; rowsToPrint.forEach(row => { queue.appendChild(generatePrintItem(row, includePinyin)); }); setTimeout(() => { window.print(); setTimeout(() => { queue.innerHTML = ''; }, 500); }, 100); }); }
 
 async function openModal(){ document.getElementById('modalOverlay').classList.add('show'); document.getElementById('modalSearch').value = ''; switchTab('inbox'); await loadAllData(); setupRealtimeListener(); }
 function closeModal(){ document.getElementById('modalOverlay').classList.remove('show'); }
@@ -888,37 +1097,27 @@ document.getElementById('modalOverlay').addEventListener('click', function(e){ i
 function switchTab(tabName) { document.querySelectorAll('.modal-tab').forEach(t => t.classList.remove('active')); document.querySelectorAll('.modal-tab-content').forEach(c => c.classList.remove('active')); if(tabName === 'inbox') { document.querySelector('.modal-tab:nth-child(1)').classList.add('active'); document.getElementById('tab-inbox').classList.add('active'); } else { document.querySelector('.modal-tab:nth-child(2)').classList.add('active'); document.getElementById('tab-main').classList.add('active'); } }
 
 let inboxUnsubscribe = null;
-function setupRealtimeListener() { if(inboxUnsubscribe) return; const q = window.firebaseQuery(window.firebaseInboxCollection, window.firebaseOrderBy("createdAt", "desc")); inboxUnsubscribe = window.firebaseOnSnapshot(q, (snapshot) => { let newCount = 0; inboxData = {}; snapshot.forEach((doc) => { const data = doc.data(); const cName = data.customerName || 'Tanpa Nama'; if(!inboxData[cName]) inboxData[cName] = []; inboxData[cName].push({ id: doc.id, ...data, savedAt: data.createdAt ? data.createdAt.toDate().toLocaleDateString('id-ID') : '-', customerWA: data.customerWA || '-' }); newCount++; }); if(newCount > lastInboxCount && lastInboxCount > 0) { toast(`🔔 ${newCount - lastInboxCount} data baru masuk!`); playNotificationSound(); } lastInboxCount = newCount; const badge = document.getElementById('notifBadge'); const inboxBadge = document.getElementById('inboxBadge'); if(newCount > 0) { badge.textContent = newCount; badge.classList.remove('h'); inboxBadge.textContent = newCount; inboxBadge.classList.remove('h'); } else { badge.classList.add('h'); inboxBadge.classList.add('h'); } if(document.getElementById('modalOverlay').classList.contains('show')) renderModalList(); }); }
+function setupRealtimeListener() { if(inboxUnsubscribe) return; const q = window.firebaseQuery(window.firebaseInboxCollection, window.firebaseOrderBy("createdAt", "desc")); inboxUnsubscribe = window.firebaseOnSnapshot(q, (snapshot) => { let newCount = 0; inboxData = {}; snapshot.forEach((doc) => { const data = doc.data(); const cName = data.customerName || 'Tanpa Nama'; if(!inboxData[cName]) inboxData[cName] = []; inboxData[cName].push({ id: doc.id, ...data, savedAt: data.createdAt ? data.createdAt.toDate().toLocaleDateString('id-ID') : '-', customerWA: data.customerWA || '-' }); newCount++; }); if(newCount > lastInboxCount && lastInboxCount > 0) { toast(` ${newCount - lastInboxCount} data baru masuk!`); playNotificationSound(); } lastInboxCount = newCount; const badge = document.getElementById('notifBadge'); const inboxBadge = document.getElementById('inboxBadge'); if(newCount > 0) { badge.textContent = newCount; badge.classList.remove('h'); inboxBadge.textContent = newCount; inboxBadge.classList.remove('h'); } else { badge.classList.add('h'); inboxBadge.classList.add('h'); } if(document.getElementById('modalOverlay').classList.contains('show')) renderModalList(); }); }
 function playNotificationSound() { try { const ctx = new (window.AudioContext || window.webkitAudioContext)(); const osc = ctx.createOscillator(); const gain = ctx.createGain(); osc.connect(gain); gain.connect(ctx.destination); osc.frequency.value = 800; gain.gain.value = 0.1; osc.start(); setTimeout(() => osc.stop(), 200); } catch(e) {} }
 
 async function loadAllData() { document.getElementById('inboxStats').innerHTML = '⏳ Memuat Inbox...'; document.getElementById('mainStats').innerHTML = '⏳ Memuat Arsip...'; try { const qInbox = window.firebaseQuery(window.firebaseInboxCollection, window.firebaseOrderBy("createdAt", "desc")); const snapInbox = await window.firebaseGetDocs(qInbox); inboxData = {}; snapInbox.forEach((doc) => { const data = doc.data(); const cName = data.customerName || 'Tanpa Nama'; if(!inboxData[cName]) inboxData[cName] = []; inboxData[cName].push({ id: doc.id, ...data, savedAt: data.createdAt ? data.createdAt.toDate().toLocaleDateString('id-ID') : '-', customerWA: data.customerWA || '-' }); }); lastInboxCount = Object.values(inboxData).flat().length; const qMain = window.firebaseQuery(window.firebaseMainCollection, window.firebaseOrderBy("createdAt", "desc")); const snapMain = await window.firebaseGetDocs(qMain); mainData = {}; snapMain.forEach((doc) => { const data = doc.data(); const cName = data.customerName || 'Tanpa Nama'; if(!mainData[cName]) mainData[cName] = []; mainData[cName].push({ id: doc.id, ...data, savedAt: data.createdAt ? data.createdAt.toDate().toLocaleDateString('id-ID') : '-' }); }); renderModalList(); } catch(e) { document.getElementById('inboxStats').innerHTML = '❌ Error: ' + e.message; } }
 function filterModalList() { renderModalList(); }
-function renderModalList(){ const search = document.getElementById('modalSearch').value.toLowerCase(); const inboxNames = Object.keys(inboxData).filter(n => n.toLowerCase().includes(search)); let totalInbox = 0; inboxNames.forEach(n => totalInbox += inboxData[n].length); document.getElementById('inboxStats').innerHTML = '<b>' + inboxNames.length + '</b> customer • <b>' + totalInbox + '</b> data baru'; const inboxHtml = inboxNames.length === 0 ? '<div style="text-align:center;color:#9ca3af;padding:20px;font-size:15px"> Inbox Kosong</div>' : inboxNames.map(name => renderCustomerCard(name, inboxData[name], true)).join(''); document.getElementById('inboxList').innerHTML = inboxHtml; const mainNames = Object.keys(mainData).filter(n => n.toLowerCase().includes(search)); let totalMain = 0; mainNames.forEach(n => totalMain += mainData[n].length); document.getElementById('mainStats').innerHTML = '<b>' + mainNames.length + '</b> customer • <b>' + totalMain + '</b> data arsip'; const mainHtml = mainNames.length === 0 ? '<div style="text-align:center;color:#9ca3af;padding:20px;font-size:15px">📭 Arsip Kosong</div>' : mainNames.map(name => renderCustomerCard(name, mainData[name], false)).join(''); document.getElementById('mainList').innerHTML = mainHtml; }
+function renderModalList(){ const search = document.getElementById('modalSearch').value.toLowerCase(); const inboxNames = Object.keys(inboxData).filter(n => n.toLowerCase().includes(search)); let totalInbox = 0; inboxNames.forEach(n => totalInbox += inboxData[n].length); document.getElementById('inboxStats').innerHTML = '<b>' + inboxNames.length + '</b> customer • <b>' + totalInbox + '</b> data baru'; const inboxHtml = inboxNames.length === 0 ? '<div style="text-align:center;color:#9ca3af;padding:20px;font-size:15px">📭 Inbox Kosong</div>' : inboxNames.map(name => renderCustomerCard(name, inboxData[name], true)).join(''); document.getElementById('inboxList').innerHTML = inboxHtml; const mainNames = Object.keys(mainData).filter(n => n.toLowerCase().includes(search)); let totalMain = 0; mainNames.forEach(n => totalMain += mainData[n].length); document.getElementById('mainStats').innerHTML = '<b>' + mainNames.length + '</b> customer • <b>' + totalMain + '</b> data arsip'; const mainHtml = mainNames.length === 0 ? '<div style="text-align:center;color:#9ca3af;padding:20px;font-size:15px">📭 Arsip Kosong</div>' : mainNames.map(name => renderCustomerCard(name, mainData[name], false)).join(''); document.getElementById('mainList').innerHTML = mainHtml; }
 
 async function loadAllDataFromCustomer(customerName, isInbox) {
   try {
     const sourceData = isInbox ? inboxData : mainData;
     const list = sourceData[customerName];
     if (!list || list.length === 0) { toast('❌ Tidak ada data!'); return; }
-    
-    batchRows = [];
-    activeBatchRowId = null;
-    batchRowCounter = 0;
-    
+    batchRows = []; activeBatchRowId = null; batchRowCounter = 0;
     for (const data of list) {
       batchRowCounter++;
       const newRow = { 
-        id: batchRowCounter, 
-        y: data.y || getCurrentBaziYear(), 
-        m: data.m || '', 
-        d: data.d || '', 
-        t: data.type || 'typeA', 
-        na: '', mb: '', nb: '', nc: '', sd: '', nd1: '', nd2: '', se: '', ne1: '', ne2: '', 
-        sf: '許', gg: '', g1: '', g2: '', g3: '', 
-        rank: data.rank || '', 
-        gender: data.gender || '', 
-        customTitle: data.customTitle || '', 
-        note: data.note || '' 
+        id: batchRowCounter, y: data.y || getCurrentBaziYear(), m: data.m || '', d: data.d || '', 
+        t: data.type || 'typeA', na: '', mb: '', nb: '', nc: '', sd: '', nd1: '', nd2: '', se: '', ne1: '', ne2: '', 
+        sf: '許', gg: '', g1: '', g2: '', g3: '', rank: data.rank || '', gender: data.gender || '', 
+        customTitle: data.customTitle || '', note: data.note || '',
+        printToggles: { year: true, month: true, day: true, marga: true, name: true, fu: true, pair: true, persembahan: true }
       };
       const nameParts = (data.name || '').split(' ');
       if(data.type === 'typeA' || data.type === 'typeD') newRow.na = data.name || '';
@@ -930,52 +1129,41 @@ async function loadAllDataFromCustomer(customerName, isInbox) {
       else if(data.type === 'typeI') newRow.sf = (data.name || '').replace('府歷代祖先','') || '許';
       batchRows.push(newRow);
     }
-    
     activeBatchRowId = batchRows[0].id;
     document.getElementById('customerName').value = customerName;
-    
-    refreshFormForActiveRow();
-    closeModal();
+    refreshFormForActiveRow(); closeModal();
     toast(`✅ ${list.length} baris "${customerName}" dimuat semua!`);
   } catch(e) { toast('❌ Error: ' + e.message); }
 }
 
 function renderCustomerCard(name, dataList, isInbox) { 
-  const latest = dataList[dataList.length-1]; 
-  const ld = latest.savedAt; 
-  const sn = name.replace(/'/g,"\\'").replace(/"/g,'&quot;'); 
-  const wa = latest.customerWA || '-'; 
-  const count = dataList.length;
+  const latest = dataList[dataList.length-1]; const ld = latest.savedAt; const sn = name.replace(/'/g,"\\'").replace(/"/g,'&quot;'); const wa = latest.customerWA || '-'; const count = dataList.length;
   let html = ''; 
   dataList.forEach((data) => { 
     const subject = (data.note ? data.note + ' | ' : '') + data.name + (data.pinyin ? ' | ' + data.pinyin : ''); 
-    const tp = {typeA:'👨 Ayah/Paman',typeB:'👩 Ibu/Bibi',typeC:'👶 Belum',typeD:'👴 Kakek',typeE:'👵 Nenek',typeF:'👴👵 Kakek Nenek',typeG:'💑 Suami Istri',typeH:'👨👩 2 Istri',typeI:'🏛️ Leluhur'}[data.type]||''; 
+    const tp = {typeA:'👨 Ayah/Paman',typeB:'👩 Ibu/Bibi',typeC:' Belum',typeD:'👴 Kakek',typeE:'👵 Nenek',typeF:'👴👵 Kakek Nenek',typeG:'💑 Suami Istri',typeH:'👨👩 2 Istri',typeI:'🏛️ Leluhur'}[data.type]||''; 
     let actionButtons = `<button class="b1" onclick="loadDataFromList('${sn}', '${data.id}', ${isInbox})">Muat & Edit</button>`; 
-    if(isInbox) { 
-      actionButtons += `<button class="b14" onclick="moveToMain('${data.id}', '${sn}')">✅ Pindah ke Arsip</button>`; 
-      actionButtons += `<button class="b4" onclick="deleteFromInbox('${data.id}')">🗑️ Hapus</button>`; 
-    } else { 
-      actionButtons += `<button class="b4" onclick="deleteFromMain('${data.id}')">🗑️ Hapus</button>`; 
-    } 
+    if(isInbox) { actionButtons += `<button class="b14" onclick="moveToMain('${data.id}', '${sn}')">✅ Pindah ke Arsip</button>`; actionButtons += `<button class="b4" onclick="deleteFromInbox('${data.id}')">🗑️ Hapus</button>`; } 
+    else { actionButtons += `<button class="b4" onclick="deleteFromMain('${data.id}')">🗑️ Hapus</button>`; } 
     html += `<div class="data-item"><div class="data-info"><div class="data-title">${subject}</div><div class="data-meta">${tp} • ${data.savedAt}${isInbox && wa !== '-' ? '<br>📱 WA: '+wa : ''}</div></div><div class="data-actions">${actionButtons}</div></div>`; 
   }); 
   const loadAllBtn = count > 1 ? `<button class="load-all-btn" onclick="event.stopPropagation(); loadAllDataFromCustomer('${sn}', ${isInbox})" title="Muat semua ${count} baris sekaligus">⚡ Muat Semua (${count})</button>` : '';
   return `<div class="customer-card expanded"><div class="customer-card-header"><div class="info"><div class="name">${name} <span class="badge">${count} data</span>${isInbox && wa !== '-' ? '<span style="font-size:13px;color:#10b981;margin-left:8px">📱 '+wa+'</span>' : ''}</div><div class="meta">Terakhir: ${ld}</div></div>${loadAllBtn}</div><div class="data-list" style="display:block">${html}</div></div>`; 
 }
 
-async function loadDataFromList(customerName, docId, isInbox) { try { const sourceData = isInbox ? inboxData : mainData; const list = sourceData[customerName]; if (!list) { toast('❌ Customer tidak ditemukan: ' + customerName); return; } const data = list.find(d => d.id === docId); if (!data) { toast('❌ Data ID tidak ditemukan'); return; } batchRowCounter++; const newRow = { id: batchRowCounter, y: data.y || getCurrentBaziYear(), m: data.m || '', d: data.d || '', t: data.type || 'typeA', na: '', mb: '', nb: '', nc: '', sd: '', nd1: '', nd2: '', se: '', ne1: '', ne2: '', sf: '許', gg: '', g1: '', g2: '', g3: '', rank: data.rank || '', gender: data.gender || '', customTitle: data.customTitle || '', note: data.note || '' }; const nameParts = (data.name || '').split(' '); if(data.type === 'typeA' || data.type === 'typeD') newRow.na = data.name || ''; else if(data.type === 'typeB' || data.type === 'typeE') { newRow.mb = nameParts[0]||''; newRow.nb = nameParts.slice(1).join(' ')||''; } else if(data.type === 'typeC') newRow.nc = data.name || ''; else if(data.type === 'typeF') { newRow.sd = nameParts[0]||''; newRow.nd1 = nameParts[1]||''; newRow.nd2 = nameParts[2]||''; } else if(data.type === 'typeG') { newRow.se = nameParts[0]||''; newRow.ne1 = nameParts[1]||''; newRow.ne2 = nameParts[2]||''; } else if(data.type === 'typeH') { newRow.gg = nameParts[0]||''; newRow.g1 = nameParts[1]||''; newRow.g2 = nameParts[2]||''; newRow.g3 = nameParts[3]||''; } else if(data.type === 'typeI') newRow.sf = (data.name || '').replace('府歷代祖先','') || '許'; batchRows.push(newRow); activeBatchRowId = newRow.id; document.getElementById('customerName').value = customerName; refreshFormForActiveRow(); closeModal(); toast('📂 "' + data.name + '" dimuat untuk diedit'); } catch(e) { toast('❌ Error: ' + e.message); } }
+async function loadDataFromList(customerName, docId, isInbox) { try { const sourceData = isInbox ? inboxData : mainData; const list = sourceData[customerName]; if (!list) { toast('❌ Customer tidak ditemukan: ' + customerName); return; } const data = list.find(d => d.id === docId); if (!data) { toast('❌ Data ID tidak ditemukan'); return; } batchRowCounter++; const newRow = { id: batchRowCounter, y: data.y || getCurrentBaziYear(), m: data.m || '', d: data.d || '', t: data.type || 'typeA', na: '', mb: '', nb: '', nc: '', sd: '', nd1: '', nd2: '', se: '', ne1: '', ne2: '', sf: '許', gg: '', g1: '', g2: '', g3: '', rank: data.rank || '', gender: data.gender || '', customTitle: data.customTitle || '', note: data.note || '', printToggles: { year: true, month: true, day: true, marga: true, name: true, fu: true, pair: true, persembahan: true } }; const nameParts = (data.name || '').split(' '); if(data.type === 'typeA' || data.type === 'typeD') newRow.na = data.name || ''; else if(data.type === 'typeB' || data.type === 'typeE') { newRow.mb = nameParts[0]||''; newRow.nb = nameParts.slice(1).join(' ')||''; } else if(data.type === 'typeC') newRow.nc = data.name || ''; else if(data.type === 'typeF') { newRow.sd = nameParts[0]||''; newRow.nd1 = nameParts[1]||''; newRow.nd2 = nameParts[2]||''; } else if(data.type === 'typeG') { newRow.se = nameParts[0]||''; newRow.ne1 = nameParts[1]||''; newRow.ne2 = nameParts[2]||''; } else if(data.type === 'typeH') { newRow.gg = nameParts[0]||''; newRow.g1 = nameParts[1]||''; newRow.g2 = nameParts[2]||''; newRow.g3 = nameParts[3]||''; } else if(data.type === 'typeI') newRow.sf = (data.name || '').replace('府歷代祖先','') || '許'; batchRows.push(newRow); activeBatchRowId = newRow.id; document.getElementById('customerName').value = customerName; refreshFormForActiveRow(); closeModal(); toast('📂 "' + data.name + '" dimuat untuk diedit'); } catch(e) { toast('❌ Error: ' + e.message); } }
 async function moveToMain(docId, customerName) { if(!confirm('Pindahkan data ini dari Inbox ke Arsip Utama?')) return; try { const data = inboxData[customerName].find(d => d.id === docId); if(!data) return; await window.firebaseAddDoc(window.firebaseMainCollection, { ...data, movedAt: window.firebaseServerTimestamp() }); await window.firebaseDeleteDoc(window.firebaseDoc(window.firebaseDB, "fengtiao_inbox", docId)); toast('✅ Data dipindahkan ke Arsip Utama'); loadAllData(); } catch(e) { toast('❌ Gagal: ' + e.message); } }
-async function deleteFromInbox(docId) { if(!confirm('Hapus data ini dari Inbox?')) return; let found = false; for (let customer in inboxData) { const beforeLength = inboxData[customer].length; inboxData[customer] = inboxData[customer].filter(d => d.id !== docId); if (inboxData[customer].length === 0) delete inboxData[customer]; if (beforeLength !== inboxData[customer]?.length) found = true; } if (found) { renderModalList(); toast('✅ Data dihapus dari Inbox'); } try { await window.firebaseDeleteDoc(window.firebaseDoc(window.firebaseDB, "fengtiao_inbox", docId)); } catch(e) { toast('️ UI dihapus, tapi gagal hapus di database: ' + e.message); } }
+async function deleteFromInbox(docId) { if(!confirm('Hapus data ini dari Inbox?')) return; let found = false; for (let customer in inboxData) { const beforeLength = inboxData[customer].length; inboxData[customer] = inboxData[customer].filter(d => d.id !== docId); if (inboxData[customer].length === 0) delete inboxData[customer]; if (beforeLength !== inboxData[customer]?.length) found = true; } if (found) { renderModalList(); toast('✅ Data dihapus dari Inbox'); } try { await window.firebaseDeleteDoc(window.firebaseDoc(window.firebaseDB, "fengtiao_inbox", docId)); } catch(e) { toast('⚠️ UI dihapus, tapi gagal hapus di database: ' + e.message); } }
 async function deleteFromMain(docId) { if(!confirm('Hapus data ini dari Arsip Utama? Data akan hilang permanen!')) return; let found = false; for (let customer in mainData) { const beforeLength = mainData[customer].length; mainData[customer] = mainData[customer].filter(d => d.id !== docId); if (mainData[customer].length === 0) delete mainData[customer]; if (beforeLength !== mainData[customer]?.length) found = true; } if (found) { renderModalList(); toast('✅ Data dihapus dari Arsip'); } try { await window.firebaseDeleteDoc(window.firebaseDoc(window.firebaseDB, "fengtiao_main", docId)); } catch(e) { toast('⚠️ UI dihapus, tapi gagal hapus di database: ' + e.message); } }
 
 function openLinkGenerator(){ document.getElementById('linkResult').style.display = 'none'; document.getElementById('linkGeneratorOverlay').classList.add('show'); }
 function closeLinkGenerator(){ document.getElementById('linkGeneratorOverlay').classList.remove('show'); }
 async function generateCustomerLink(){ try { const uniqueCode = 'CUST' + Date.now(); const baseUrl = window.location.href.split('?')[0]; const customerLink = baseUrl + '?customer=' + uniqueCode; const linkRef = window.firebaseDoc(window.firebaseDB, "fengtiao_links", uniqueCode); await window.firebaseSetDoc(linkRef, { code: uniqueCode, used: false, createdAt: window.firebaseServerTimestamp() }); document.getElementById('generatedLink').textContent = customerLink; document.getElementById('linkResult').style.display = 'block'; window.currentCustomerLink = customerLink; toast('✅ Link sekali pakai berhasil dibuat!'); } catch(e) { toast('❌ Gagal membuat link: ' + e.message); } }
-function copyLinkToClipboard(){ if(!window.currentCustomerLink) return; navigator.clipboard.writeText(window.currentCustomerLink).then(() => toast('📋 Link disalin!')).catch(() => { const ta = document.createElement('textarea'); ta.value = window.currentCustomerLink; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); toast('📋 Link disalin!'); } catch(e) { toast('❌ Gagal copy'); } document.body.removeChild(ta); }); }
+function copyLinkToClipboard(){ if(!window.currentCustomerLink) return; navigator.clipboard.writeText(window.currentCustomerLink).then(() => toast(' Link disalin!')).catch(() => { const ta = document.createElement('textarea'); ta.value = window.currentCustomerLink; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); toast(' Link disalin!'); } catch(e) { toast('❌ Gagal copy'); } document.body.removeChild(ta); }); }
 function openWhatsAppWithLink(){ if(!window.currentCustomerLink) return; window.open(`https://wa.me/?text=Halo,%20berikut%20link%20untuk%20mengisi%20data%20Feng%20Tiao:%0A${window.currentCustomerLink}%0A%0ASilakan%20isi%20data%20almarhum.%20Link%20ini%20hanya%20bisa%20digunakan%201%20kali.%0A%0ATerima%20kasih%20🙏`, '_blank'); }
 
 let entryCounter = 0;
-function addCustomerEntry() { entryCounter++; const container = document.getElementById('customer-entries'); const entryDiv = document.createElement('div'); entryDiv.className = 'customer-entry'; entryDiv.id = 'entry-' + entryCounter; entryDiv.innerHTML = `<div class="customer-entry-header"><strong>Data Almarhum ke-${entryCounter}</strong><button type="button" class="btn-hapus-entry" onclick="removeCustomerEntry(${entryCounter})">🗑️ Hapus</button></div><label>Hubungan Keluarga *</label><select class="entry-type" onchange="updateCustomerEntryFields(${entryCounter})"><option value="typeA">Ayah/Paman (顯考)</option><option value="typeB">Ibu/Bibi (顯妣)</option><option value="typeC">Belum Menikah (故)</option><option value="typeD">Kakek (顯祖考)</option><option value="typeE">Nenek (顯祖妣)</option><option value="typeF">Kakek Nenek (祖妣考)</option><option value="typeG">Suami Istri (顯妣考)</option><option value="typeH">2 Istri</option><option value="typeI">Leluhur (府歷代祖先)</option></select><div class="dynamic-fields" id="dynamic-fields-${entryCounter}"></div><div class="row" style="margin-top:15px;"><div><label>Bulan Lunar</label><input type="text" class="entry-month" placeholder="cth: 1 atau juli"><div class="month-helper">1=正, 2=二, 3=三...</div></div><div><label>Tanggal (1-30)</label><input type="text" class="entry-day" placeholder="cth: 15"></div></div><div class="tambahan-box" style="margin-top:15px; background:rgba(0,0,0,0.2); border-color:rgba(251,191,36,0.2);"><div class="tambahan-header"><h4 style="color:#fbbf24;"> Persembahan</h4><button class="clear-btn" onclick="clearEntryPersembahan(${entryCounter})">🗑️ Clear</button></div><div class="persembahan-display" id="entry-persembahan-${entryCounter}" data-chars="" style="background:rgba(0,0,0,0.2); border-color:rgba(251,191,36,0.2);"><span class="persembahan-empty" style="color:rgba(251,191,36,0.5);">Belum ada - pilih di bawah atau ketik</span></div><div class="quick-select-panel"><h5>🔢 Pilih Urutan Anak (1-15):</h5><div class="quick-select-grid" id="quick-numbers-${entryCounter}"></div><h5 style="margin-top:12px;">⚧ Pilih Gender:</h5><div class="gender-select-row" id="quick-gender-${entryCounter}"><button type="button" class="gender-btn" onclick="addQuickGender('男', ${entryCounter})">👦 Laki-laki (男)</button><button type="button" class="gender-btn" onclick="addQuickGender('女', ${entryCounter})">👧 Perempuan (女)</button></div><h5 style="margin-top:12px;">🔍 Atau Cari Manual:</h5></div><input type="text" class="tambahan-input entry-relation-search" placeholder="Ketik: cucu, 媳, yang... (SPACE pilih)" oninput="searchEntryRelation(${entryCounter})" onkeydown="handleEntrySearchKey(event, ${entryCounter})" autocomplete="off" style="background:rgba(0,0,0,0.3); color:#fff; border-color:rgba(251,191,36,0.2);"><div class="tambahan-results entry-search-results" id="entry-results-${entryCounter}"><div class="tambahan-empty-search" style="color:rgba(251,191,36,0.5);">Ketik untuk mencari...</div></div></div><label style="margin-top:15px;">Catatan untuk Toko (Opsional)</label><textarea class="entry-catatan" placeholder="Tulis catatan di sini..." rows="2" style="background:rgba(0,0,0,0.3); color:#fff; border-color:rgba(251,191,36,0.2);"></textarea>`; container.appendChild(entryDiv); updateCustomerEntryFields(entryCounter); initQuickSelectPanel(entryCounter); }
+function addCustomerEntry() { entryCounter++; const container = document.getElementById('customer-entries'); const entryDiv = document.createElement('div'); entryDiv.className = 'customer-entry'; entryDiv.id = 'entry-' + entryCounter; entryDiv.innerHTML = `<div class="customer-entry-header"><strong>Data Almarhum ke-${entryCounter}</strong><button type="button" class="btn-hapus-entry" onclick="removeCustomerEntry(${entryCounter})">️ Hapus</button></div><label>Hubungan Keluarga *</label><select class="entry-type" onchange="updateCustomerEntryFields(${entryCounter})"><option value="typeA">Ayah/Paman (顯考)</option><option value="typeB">Ibu/Bibi (顯妣)</option><option value="typeC">Belum Menikah (故)</option><option value="typeD">Kakek (顯祖考)</option><option value="typeE">Nenek (顯祖妣)</option><option value="typeF">Kakek Nenek (祖妣考)</option><option value="typeG">Suami Istri (顯妣考)</option><option value="typeH">2 Istri</option><option value="typeI">Leluhur (府歷代祖先)</option></select><div class="dynamic-fields" id="dynamic-fields-${entryCounter}"></div><div class="row" style="margin-top:15px;"><div><label>Bulan Lunar</label><input type="text" class="entry-month" placeholder="cth: 1 atau juli"><div class="month-helper">1=正, 2=二, 3=三...</div></div><div><label>Tanggal (1-30)</label><input type="text" class="entry-day" placeholder="cth: 15"></div></div><div class="tambahan-box" style="margin-top:15px; background:rgba(0,0,0,0.2); border-color:rgba(251,191,36,0.2);"><div class="tambahan-header"><h4 style="color:#fbbf24;">🎯 Persembahan</h4><button class="clear-btn" onclick="clearEntryPersembahan(${entryCounter})">🗑️ Clear</button></div><div class="persembahan-display" id="entry-persembahan-${entryCounter}" data-chars="" style="background:rgba(0,0,0,0.2); border-color:rgba(251,191,36,0.2);"><span class="persembahan-empty" style="color:rgba(251,191,36,0.5);">Belum ada - pilih di bawah atau ketik</span></div><div class="quick-select-panel"><h5>🔢 Pilih Urutan Anak (1-15):</h5><div class="quick-select-grid" id="quick-numbers-${entryCounter}"></div><h5 style="margin-top:12px;">⚧ Pilih Gender:</h5><div class="gender-select-row" id="quick-gender-${entryCounter}"><button type="button" class="gender-btn" onclick="addQuickGender('男', ${entryCounter})">👦 Laki-laki (男)</button><button type="button" class="gender-btn" onclick="addQuickGender('女', ${entryCounter})">👧 Perempuan (女)</button></div><h5 style="margin-top:12px;">🔍 Atau Cari Manual:</h5></div><input type="text" class="tambahan-input entry-relation-search" placeholder="Ketik: cucu, 媳, yang... (SPACE pilih)" oninput="searchEntryRelation(${entryCounter})" onkeydown="handleEntrySearchKey(event, ${entryCounter})" autocomplete="off" style="background:rgba(0,0,0,0.3); color:#fff; border-color:rgba(251,191,36,0.2);"><div class="tambahan-results entry-search-results" id="entry-results-${entryCounter}"><div class="tambahan-empty-search" style="color:rgba(251,191,36,0.5);">Ketik untuk mencari...</div></div></div><label style="margin-top:15px;">Catatan untuk Toko (Opsional)</label><textarea class="entry-catatan" placeholder="Tulis catatan di sini..." rows="2" style="background:rgba(0,0,0,0.3); color:#fff; border-color:rgba(251,191,36,0.2);"></textarea>`; container.appendChild(entryDiv); updateCustomerEntryFields(entryCounter); initQuickSelectPanel(entryCounter); }
 function initQuickSelectPanel(entryId) { const grid = document.getElementById(`quick-numbers-${entryId}`); const numbers = [{num:'1',char:'一',desc:'1'},{num:'2',char:'二',desc:'2'},{num:'3',char:'三',desc:'3'},{num:'4',char:'四',desc:'4'},{num:'5',char:'五',desc:'5'},{num:'6',char:'六',desc:'6'},{num:'7',char:'七',desc:'7'},{num:'8',char:'八',desc:'8'},{num:'9',char:'九',desc:'9'},{num:'10',char:'十',desc:'10'},{num:'11',char:'十一',desc:'11'},{num:'12',char:'十二',desc:'12'},{num:'13',char:'十三',desc:'13'},{num:'14',char:'十四',desc:'14'},{num:'15',char:'十五',desc:'15'}]; grid.innerHTML = numbers.map(n => `<button type="button" class="quick-select-btn" onclick="addQuickNumber('${n.char}', ${entryId})" title="Anak ke-${n.desc}">${n.char}<br><small style="font-size:11px;">${n.desc}</small></button>`).join(''); }
 function addQuickNumber(char, entryId) { const display = document.getElementById(`entry-persembahan-${entryId}`); const existing = display.dataset.chars || ''; const newChars = existing + char; display.dataset.chars = newChars; display.innerHTML = newChars.split('').map((c, idx) => `<span class="persembahan-char" onclick="removeEntryChar(${idx}, ${entryId})">${c}<span class="remove">✕</span></span>`).join(''); toast('✅ Ditambahkan: ' + char); }
 function addQuickGender(char, entryId) { const display = document.getElementById(`entry-persembahan-${entryId}`); const existing = display.dataset.chars || ''; const newChars = existing + char; display.dataset.chars = newChars; display.innerHTML = newChars.split('').map((c, idx) => `<span class="persembahan-char" onclick="removeEntryChar(${idx}, ${entryId})">${c}<span class="remove">✕</span></span>`).join(''); toast('✅ Ditambahkan: ' + char); }
@@ -987,12 +1175,12 @@ function removeEntryChar(idx, entryId) { const display = document.getElementById
 function clearEntryPersembahan(entryId) { const display = document.getElementById(`entry-persembahan-${entryId}`); display.dataset.chars = ''; display.innerHTML = '<span class="persembahan-empty" style="color:rgba(251,191,36,0.5);">Belum ada - pilih di atas</span>'; }
 function handleEntrySearchKey(e, entryId) { const results = document.querySelectorAll(`#entry-results-${entryId} .tambahan-btn`); const query = document.querySelector(`#entry-${entryId} .entry-relation-search`).value.trim(); if(e.key === 'Tab' || e.key === 'ArrowRight' || e.key === 'ArrowDown'){ e.preventDefault(); if(results.length > 0){ const current = Array.from(results).findIndex(b => b.classList.contains('highlighted')); const next = (current + 1) % results.length; results.forEach(b => b.classList.remove('highlighted')); results[next].classList.add('highlighted'); results[next].scrollIntoView({block:'nearest'}); } } else if(e.key === 'ArrowLeft' || e.key === 'ArrowUp'){ e.preventDefault(); if(results.length > 0){ const current = Array.from(results).findIndex(b => b.classList.contains('highlighted')); const prev = (current - 1 + results.length) % results.length; results.forEach(b => b.classList.remove('highlighted')); results[prev].classList.add('highlighted'); results[prev].scrollIntoView({block:'nearest'}); } } else if(e.key === ' ' || e.key === 'Spacebar' || e.key === 'Enter'){ e.preventDefault(); if(results.length > 0){ const highlighted = Array.from(results).find(b => b.classList.contains('highlighted')); if(highlighted) highlighted.click(); else results[0].click(); } else if(query){ addEntryRelationChar(query, entryId); } } else if(e.key === 'Escape'){ e.preventDefault(); document.querySelector(`#entry-${entryId} .entry-relation-search`).value = ''; document.getElementById(`entry-results-${entryId}`).innerHTML = '<div class="tambahan-empty-search" style="color:rgba(251,191,36,0.5);">Ketik untuk mencari...</div>'; } }
 
-async function submitCustomerForm(){ const customerCode = document.getElementById('cf_customerCode').value; if(!customerCode){ alert('⚠️ Link tidak valid!'); return; } const customerName = document.getElementById('cf_customerName').value.trim(); const customerWA = document.getElementById('cf_customerWA').value.trim(); if(!customerName){ alert('⚠️ Isi nama Anda!'); return; } if(!customerWA){ alert('⚠️ Isi nomor WhatsApp!'); return; } const entries = document.querySelectorAll('.customer-entry'); if(entries.length === 0){ alert('️ Silakan tambah minimal 1 data almarhum!'); return; } try { const linkRef = window.firebaseDoc(window.firebaseDB, "fengtiao_links", customerCode); const linkSnap = await window.firebaseGetDoc(linkRef); if (!linkSnap.exists() || linkSnap.data().used === true) { document.getElementById('customer-form-content').innerHTML = `<div class="success-message"><div style="font-size:80px;margin-bottom:30px">⚠️</div><h3 style="color:#ef4444;margin-bottom:20px">Link Sudah Tidak Berlaku</h3><p style="color:#fef3c7;font-size:17px">Maaf, link ini sudah pernah digunakan. Silakan minta link baru.</p><a href="https://wa.me/6282174183251?text=Halo%20Toko%20Dupa%20Lotus%20888,%20link%20saya%20sudah%20tidak%20bisa%20digunakan.%20Mohon%20link%20baru." target="_blank" class="wa-contact-btn" style="margin-top:30px;background:linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">📱 Minta Link Baru via WA</a></div>`; return; } let successCount = 0; for(let entry of entries) { const type = entry.querySelector('.entry-type').value; const monthInput = entry.querySelector('.entry-month').value.trim().toLowerCase(); const dayInput = entry.querySelector('.entry-day').value.trim(); const persembahanDisplay = entry.querySelector('.persembahan-display'); const persembahan = persembahanDisplay.dataset.chars || ''; const catatan = entry.querySelector('.entry-catatan').value.trim(); let fullName = ''; if(type === 'typeA' || type === 'typeD' || type === 'typeC') { const nameInput = entry.querySelector('.entry-name'); fullName = nameInput ? nameInput.value.trim() : ''; } else if(type === 'typeB' || type === 'typeE') { const mb = entry.querySelector('.entry-name-mb')?.value.trim() || ''; const nb = entry.querySelector('.entry-name-nb')?.value.trim() || ''; fullName = (mb + ' ' + nb).trim(); } else if(type === 'typeF') { const sd = entry.querySelector('.entry-name-sd')?.value.trim() || ''; const nd1 = entry.querySelector('.entry-name-nd1')?.value.trim() || ''; const nd2 = entry.querySelector('.entry-name-nd2')?.value.trim() || ''; fullName = (sd + ' ' + nd1 + ' ' + nd2).trim(); } else if(type === 'typeG') { const se = entry.querySelector('.entry-name-se')?.value.trim() || ''; const ne1 = entry.querySelector('.entry-name-ne1')?.value.trim() || ''; const ne2 = entry.querySelector('.entry-name-ne2')?.value.trim() || ''; fullName = (se + ' ' + ne1 + ' ' + ne2).trim(); } else if(type === 'typeH') { const gg = entry.querySelector('.entry-name-gg')?.value.trim() || ''; const g1 = entry.querySelector('.entry-name-g1')?.value.trim() || ''; const g2 = entry.querySelector('.entry-name-g2')?.value.trim() || ''; const g3 = entry.querySelector('.entry-name-g3')?.value.trim() || ''; fullName = (gg + ' ' + g1 + ' ' + g2 + ' ' + g3).trim(); } else if(type === 'typeI') { const sf = entry.querySelector('.entry-name-sf')?.value.trim() || '許'; fullName = sf + '府歷代祖先'; } if(!fullName) continue; let month = ''; const num = parseInt(monthInput); if(!isNaN(num) && num >= 1 && num <= 12){ month = LUNAR_MONTHS[num-1]; } else { const idMonths = ['januari','februari','maret','april','mei','juni','juli','agustus','september','oktober','november','desember']; const idx = idMonths.indexOf(monthInput); if(idx >= 0) month = LUNAR_MONTHS[idx]; } let day = ''; const dayNum = parseInt(dayInput); if(!isNaN(dayNum) && dayNum >= 1 && dayNum <= 30) day = LUNAR_DAYS[dayNum]; await window.firebaseAddDoc(window.firebaseInboxCollection, { customerName: customerName, customerWA: customerWA, name: fullName, pinyin: convertToPinyin(fullName), note: catatan ? 'Catatan: ' + catatan : 'Dari Form Customer (Link: ' + customerCode + ')', type: type, y: getCurrentBaziYear(), m: month, d: day, customTitle: persembahan, createdAt: window.firebaseServerTimestamp() }); successCount++; } if(successCount > 0) { await window.firebaseUpdateDoc(linkRef, { used: true, usedAt: window.firebaseServerTimestamp(), usedBy: customerName }); document.getElementById('customer-form-content').innerHTML = `<div class="success-message"><div style="font-size:80px;margin-bottom:30px">✅</div><h3 style="color:#fbbf24;margin-bottom:20px">Berhasil Mengirim ${successCount} Data!</h3><p style="color:#fef3c7;font-size:17px">Terima kasih ${customerName}. Data Anda akan segera diproses.</p><a href="https://wa.me/6282174183251?text=Halo%20Toko%20Dupa%20Lotus%20888,%20saya%20${encodeURIComponent(customerName)}%20sudah%20mengirim%20data%20Feng%20Tiao.%20Mohon%20dicek." target="_blank" class="wa-contact-btn" style="margin-top:30px">📱 Konfirmasi via WhatsApp</a></div>`; } else { alert('️ Tidak ada data valid yang dikirim. Pastikan Nama Almarhum diisi!'); } } catch(e) { alert('❌ Gagal kirim: ' + e.message); } }
+async function submitCustomerForm(){ const customerCode = document.getElementById('cf_customerCode').value; if(!customerCode){ alert('⚠️ Link tidak valid!'); return; } const customerName = document.getElementById('cf_customerName').value.trim(); const customerWA = document.getElementById('cf_customerWA').value.trim(); if(!customerName){ alert('⚠️ Isi nama Anda!'); return; } if(!customerWA){ alert('⚠️ Isi nomor WhatsApp!'); return; } const entries = document.querySelectorAll('.customer-entry'); if(entries.length === 0){ alert('⚠️ Silakan tambah minimal 1 data almarhum!'); return; } try { const linkRef = window.firebaseDoc(window.firebaseDB, "fengtiao_links", customerCode); const linkSnap = await window.firebaseGetDoc(linkRef); if (!linkSnap.exists() || linkSnap.data().used === true) { document.getElementById('customer-form-content').innerHTML = `<div class="success-message"><div style="font-size:80px;margin-bottom:30px">⚠️</div><h3 style="color:#ef4444;margin-bottom:20px">Link Sudah Tidak Berlaku</h3><p style="color:#fef3c7;font-size:17px">Maaf, link ini sudah pernah digunakan. Silakan minta link baru.</p><a href="https://wa.me/6282174183251?text=Halo%20Toko%20Dupa%20Lotus%20888,%20link%20saya%20sudah%20tidak%20bisa%20digunakan.%20Mohon%20link%20baru." target="_blank" class="wa-contact-btn" style="margin-top:30px;background:linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">📱 Minta Link Baru via WA</a></div>`; return; } let successCount = 0; for(let entry of entries) { const type = entry.querySelector('.entry-type').value; const monthInput = entry.querySelector('.entry-month').value.trim().toLowerCase(); const dayInput = entry.querySelector('.entry-day').value.trim(); const persembahanDisplay = entry.querySelector('.persembahan-display'); const persembahan = persembahanDisplay.dataset.chars || ''; const catatan = entry.querySelector('.entry-catatan').value.trim(); let fullName = ''; if(type === 'typeA' || type === 'typeD' || type === 'typeC') { const nameInput = entry.querySelector('.entry-name'); fullName = nameInput ? nameInput.value.trim() : ''; } else if(type === 'typeB' || type === 'typeE') { const mb = entry.querySelector('.entry-name-mb')?.value.trim() || ''; const nb = entry.querySelector('.entry-name-nb')?.value.trim() || ''; fullName = (mb + ' ' + nb).trim(); } else if(type === 'typeF') { const sd = entry.querySelector('.entry-name-sd')?.value.trim() || ''; const nd1 = entry.querySelector('.entry-name-nd1')?.value.trim() || ''; const nd2 = entry.querySelector('.entry-name-nd2')?.value.trim() || ''; fullName = (sd + ' ' + nd1 + ' ' + nd2).trim(); } else if(type === 'typeG') { const se = entry.querySelector('.entry-name-se')?.value.trim() || ''; const ne1 = entry.querySelector('.entry-name-ne1')?.value.trim() || ''; const ne2 = entry.querySelector('.entry-name-ne2')?.value.trim() || ''; fullName = (se + ' ' + ne1 + ' ' + ne2).trim(); } else if(type === 'typeH') { const gg = entry.querySelector('.entry-name-gg')?.value.trim() || ''; const g1 = entry.querySelector('.entry-name-g1')?.value.trim() || ''; const g2 = entry.querySelector('.entry-name-g2')?.value.trim() || ''; const g3 = entry.querySelector('.entry-name-g3')?.value.trim() || ''; fullName = (gg + ' ' + g1 + ' ' + g2 + ' ' + g3).trim(); } else if(type === 'typeI') { const sf = entry.querySelector('.entry-name-sf')?.value.trim() || '許'; fullName = sf + '府歷代祖先'; } if(!fullName) continue; let month = ''; const num = parseInt(monthInput); if(!isNaN(num) && num >= 1 && num <= 12){ month = LUNAR_MONTHS[num-1]; } else { const idMonths = ['januari','februari','maret','april','mei','juni','juli','agustus','september','oktober','november','desember']; const idx = idMonths.indexOf(monthInput); if(idx >= 0) month = LUNAR_MONTHS[idx]; } let day = ''; const dayNum = parseInt(dayInput); if(!isNaN(dayNum) && dayNum >= 1 && dayNum <= 30) day = LUNAR_DAYS[dayNum]; await window.firebaseAddDoc(window.firebaseInboxCollection, { customerName: customerName, customerWA: customerWA, name: fullName, pinyin: convertToPinyin(fullName), note: catatan ? 'Catatan: ' + catatan : 'Dari Form Customer (Link: ' + customerCode + ')', type: type, y: getCurrentBaziYear(), m: month, d: day, customTitle: persembahan, createdAt: window.firebaseServerTimestamp() }); successCount++; } if(successCount > 0) { await window.firebaseUpdateDoc(linkRef, { used: true, usedAt: window.firebaseServerTimestamp(), usedBy: customerName }); document.getElementById('customer-form-content').innerHTML = `<div class="success-message"><div style="font-size:80px;margin-bottom:30px">✅</div><h3 style="color:#fbbf24;margin-bottom:20px">Berhasil Mengirim ${successCount} Data!</h3><p style="color:#fef3c7;font-size:17px">Terima kasih ${customerName}. Data Anda akan segera diproses.</p><a href="https://wa.me/6282174183251?text=Halo%20Toko%20Dupa%20Lotus%20888,%20saya%20${encodeURIComponent(customerName)}%20sudah%20mengirim%20data%20Feng%20Tiao.%20Mohon%20dicek." target="_blank" class="wa-contact-btn" style="margin-top:30px">📱 Konfirmasi via WhatsApp</a></div>`; } else { alert('⚠️ Tidak ada data valid yang dikirim. Pastikan Nama Almarhum diisi!'); } } catch(e) { alert('❌ Gagal kirim: ' + e.message); } }
 
 function askNewSession(){ if(batchRows.length > 1 && !confirm('Mulai sesi baru? Data belum disimpan akan hilang.')) return; resetFormToNew(); toast('✨ Sesi baru siap'); }
 function resetFormToNew(){ batchRows = []; activeBatchRowId = null; batchRowCounter = 0; document.getElementById('customerName').value = ''; ensureOneRow(); renderBatchList(); clearPreview(); updateCopyBox(); }
 function downloadBackup(){ const s = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(mainData, null, 2)); const a = document.createElement('a'); a.setAttribute("href", s); a.setAttribute("download", "backup_arsip_" + new Date().toISOString().slice(0,10) + ".json"); document.body.appendChild(a); a.click(); a.remove(); toast('✅ Backup Arsip diunduh!'); }
-function uploadBackup(el){ const file = el.files[0]; if(!file) return; const reader = new FileReader(); reader.onload = function(e){ try { const imp = JSON.parse(e.target.result); toast('✅ ' + Object.keys(imp).length + ' customer diimport ke Lokal'); } catch(err){ toast(' Gagal baca file'); } }; reader.readAsText(file); el.value = ''; }
+function uploadBackup(el){ const file = el.files[0]; if(!file) return; const reader = new FileReader(); reader.onload = function(e){ try { const imp = JSON.parse(e.target.result); toast('✅ ' + Object.keys(imp).length + ' customer diimport ke Lokal'); } catch(err){ toast('❌ Gagal baca file'); } }; reader.readAsText(file); el.value = ''; }
 function toast(msg){ const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 3000); }
 
 document.addEventListener('keydown', (e) => { if(e.key === 'Escape') { if(document.getElementById('printConfirmOverlay').classList.contains('show')) cancelPrint(); if(document.getElementById('selectPrintModal')) closeSelectPrintModal(); if(document.getElementById('modalOverlay').classList.contains('show')) closeModal(); if(document.getElementById('linkGeneratorOverlay').classList.contains('show')) closeLinkGenerator(); if(document.getElementById('change-password-modal').style.display === 'flex') closeChangePassword(); } });
