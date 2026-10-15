@@ -1037,6 +1037,11 @@ function playNotificationSound() { try { const ctx = new (window.AudioContext ||
 async function loadAllData() { document.getElementById('inboxStats').innerHTML = ' Memuat Inbox...'; document.getElementById('mainStats').innerHTML = '⏳ Memuat Arsip...'; try { const qInbox = window.firebaseQuery(window.firebaseInboxCollection, window.firebaseOrderBy("createdAt", "desc")); const snapInbox = await window.firebaseGetDocs(qInbox); inboxData = {}; snapInbox.forEach((doc) => { const data = doc.data(); const cName = data.customerName || 'Tanpa Nama'; if(!inboxData[cName]) inboxData[cName] = []; inboxData[cName].push({ id: doc.id, ...data, savedAt: data.createdAt ? data.createdAt.toDate().toLocaleDateString('id-ID') : '-', customerWA: data.customerWA || '-' }); }); lastInboxCount = Object.values(inboxData).flat().length; const qMain = window.firebaseQuery(window.firebaseMainCollection, window.firebaseOrderBy("createdAt", "desc")); const snapMain = await window.firebaseGetDocs(qMain); mainData = {}; snapMain.forEach((doc) => { const data = doc.data(); const cName = data.customerName || 'Tanpa Nama'; if(!mainData[cName]) mainData[cName] = []; mainData[cName].push({ id: doc.id, ...data, savedAt: data.createdAt ? data.createdAt.toDate().toLocaleDateString('id-ID') : '-' }); }); renderModalList(); } catch(e) { document.getElementById('inboxStats').innerHTML = '❌ Error: ' + e.message; } }
 
 // 🆕 FUNGSI HIGHLIGHT SEARCH
+  // 🆕 FUNGSI HAPUS NADA/GARIS PINYIN
+function removeTones(str) {
+  if (!str) return '';
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
 function highlightText(text, query) {
   if (!query || !text) return text;
   const queryLower = query.toLowerCase();
@@ -1049,21 +1054,23 @@ function highlightText(text, query) {
   return before + '<span class="search-highlight">' + match + '</span>' + after;
 }
 
-function filterModalList() { 
-  renderModalList(); 
-}
-
 function renderModalList(){ 
   const search = document.getElementById('modalSearch').value.toLowerCase().trim(); 
+  const searchNoTone = removeTones(search); // 🆕 Hapus garis dari pencarian
   
-  //  Filter Inbox berdasarkan nama customer, nama Mandarin, atau pinyin
+  //  Filter Inbox
   const inboxNames = Object.keys(inboxData).filter(n => {
     if (!search) return true;
     const customerName = n.toLowerCase();
     const hasMatch = inboxData[n].some(d => {
       const mandarin = (d.name || '').toLowerCase();
-      const pinyin = (d.pinyin || '').toLowerCase();
-      return customerName.includes(search) || mandarin.includes(search) || pinyin.includes(search);
+      // 🆕 Cari pinyin tanpa garis
+      const pinyinRaw = (d.pinyin || '').toLowerCase();
+      const pinyinNoTone = removeTones(pinyinRaw);
+      
+      return customerName.includes(search) || 
+             mandarin.includes(search) || 
+             pinyinNoTone.includes(searchNoTone);
     });
     return hasMatch;
   });
@@ -1074,6 +1081,31 @@ function renderModalList(){
   
   const inboxHtml = inboxNames.length === 0 ? '<div style="text-align:center;color:#9ca3af;padding:20px;font-size:15px">📭 Tidak ada data</div>' : inboxNames.map(name => renderCustomerCard(name, inboxData[name], true, search)).join(''); 
   document.getElementById('inboxList').innerHTML = inboxHtml; 
+  
+  //  Filter Arsip Utama
+  const mainNames = Object.keys(mainData).filter(n => {
+    if (!search) return true;
+    const customerName = n.toLowerCase();
+    const hasMatch = mainData[n].some(d => {
+      const mandarin = (d.name || '').toLowerCase();
+      // 🆕 Cari pinyin tanpa garis
+      const pinyinRaw = (d.pinyin || '').toLowerCase();
+      const pinyinNoTone = removeTones(pinyinRaw);
+      
+      return customerName.includes(search) || 
+             mandarin.includes(search) || 
+             pinyinNoTone.includes(searchNoTone);
+    });
+    return hasMatch;
+  });
+  
+  let totalMain = 0; 
+  mainNames.forEach(n => totalMain += mainData[n].length); 
+  document.getElementById('mainStats').innerHTML = '<b>' + mainNames.length + '</b> customer • <b>' + totalMain + '</b> data arsip'; 
+  
+  const mainHtml = mainNames.length === 0 ? '<div style="text-align:center;color:#9ca3af;padding:20px;font-size:15px">📭 Arsip Kosong</div>' : mainNames.map(name => renderCustomerCard(name, mainData[name], false, search)).join(''); 
+  document.getElementById('mainList').innerHTML = mainHtml; 
+}
   
   // 🆕 Filter Arsip berdasarkan nama customer, nama Mandarin, atau pinyin
   const mainNames = Object.keys(mainData).filter(n => {
