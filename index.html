@@ -504,7 +504,7 @@ button:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,0.3)}
         <div class="persembahan-display" id="persembahanDisplay">
           <span class="persembahan-empty">Belum ada - ketik di bawah</span>
         </div>
-        <input type="text" class="tambahan-input" id="relationSearch" placeholder="Ketik: cucu, angkat, bungsu... (Tekan ENTER untuk pilih)" oninput="searchRelation()" onkeydown="handleSearchKey(event)" autocomplete="off">
+        <input type="text" class="tambahan-input" id="relationSearch" placeholder="Ketik: cucu, angkat, bungsu... (Tekan ENTER untuk pilih)" oninput="handleSearchInput()" onkeydown="handleSearchKey(event)" autocomplete="off">
         <div class="tambahan-results" id="searchResults">
           <div class="tambahan-empty-search">Ketik untuk mencari...</div>
         </div>
@@ -717,33 +717,88 @@ const TRANSLATION_DICT = { '孝':'yang berbakti','长男':'anak sulung laki-laki
 function translatePersembahan(leftTitle, jenis){ try { if(!leftTitle || leftTitle === '孝') return ''; let text = leftTitle; let hasXiao = false; if(text.startsWith('孝')){ hasXiao = true; text = text.substring(1); } let translation = ''; let remaining = text; const sortedKeys = Object.keys(TRANSLATION_DICT).sort((a,b) => b.length - a.length); while(remaining.length > 0){ let matched = false; for(const key of sortedKeys){ if(remaining.startsWith(key)){ if(translation) translation += ' '; translation += TRANSLATION_DICT[key]; remaining = remaining.substring(key.length); matched = true; break; } } if(!matched){ const firstChar = remaining.charAt(0); if(translation) translation += ' '; translation += '[' + firstChar + ']'; remaining = remaining.substring(1); } } if(translation) translation = translation.charAt(0).toUpperCase() + translation.slice(1); const isMultiPeople = (jenis === 'typeD' || jenis === 'typeE' || jenis === 'typeF' || jenis === 'typeG' || jenis === 'typeH'); if(hasXiao && translation && !isMultiPeople) translation += ' yang berbakti'; else if(hasXiao && !translation && !isMultiPeople) translation = 'Yang berbakti'; return translation; } catch(e) { return ''; } }
 
 // 🆕 FUNGSI KAMUS (Hanya Enter, Spasi jadi Enter saat cetak)
-function searchRelation(){ 
-  const query = document.getElementById('relationSearch').value.trim(); 
-  const resultsDiv = document.getElementById('searchResults'); 
-  searchHighlightIndex = -1; 
-  if(!query){ resultsDiv.innerHTML = '<div class="tambahan-empty-search">Ketik untuk mencari...</div>'; return; } 
-  const queryLower = query.toLowerCase(); 
-  
-  const matches = relationDB.filter(item => 
-    item.keys.some(key => key.includes(queryLower)) || 
-    item.char.includes(query) || 
-    item.desc.toLowerCase().includes(queryLower)
-  );
-  
-  if(matches.length === 0){
-    resultsDiv.innerHTML = `<div class="tambahan-empty-search">Tidak ditemukan. Tekan ENTER untuk menambahkan teks manual: <b style="color:#fbbf24;">${query}</b></div>`;
-    return;
-  }
-  
-  resultsDiv.innerHTML = matches.map((item, idx) => {
-    return `
-      <div class="tambahan-btn" data-idx="${idx}" onclick="addRelationChar('${item.char}')">
-        <div class="char">${item.char}</div>
-        <div class="pinyin">${item.pinyin}</div>
-        <div class="desc">${item.desc}</div>
-      </div>
-    `;
-  }).join('');
+let searchTimeout = null;
+
+// Fungsi untuk menunggu Bapak selesai mengetik (biar tidak spam API)
+function handleSearchInput() {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => {
+        searchRelation();
+    }, 600); 
+}
+
+async function searchRelation() {
+    const query = document.getElementById('relationSearch').value.trim();
+    const resultsDiv = document.getElementById('searchResults');
+    searchHighlightIndex = -1;
+
+    if (!query) {
+        resultsDiv.innerHTML = '<div class="tambahan-empty-search">Ketik untuk mencari...</div>';
+        return;
+    }
+
+    // 1. Cari di Kamus Lokal dulu (Untuk istilah Feng Tiao yang spesifik)
+    const queryLower = query.toLowerCase();
+    const localMatches = relationDB.filter(item =>
+        item.keys.some(key => key.includes(queryLower)) ||
+        item.char.includes(query) ||
+        item.desc.toLowerCase().includes(queryLower)
+    );
+
+    let html = '';
+    localMatches.forEach((item) => {
+        html += `
+          <div class="tambahan-btn" onclick="addRelationChar('${item.char}')">
+            <div class="char">${item.char}</div>
+            <div class="pinyin">${item.pinyin}</div>
+            <div class="desc">${item.desc} (Kamus)</div>
+          </div>
+        `;
+    });
+
+    // 2. Tampilkan Loading API
+    html += `<div id="api-loading" style="width:100%;text-align:center;color:#60a5fa;padding:10px;">🔄 Menerjemahkan...</div>`;
+    resultsDiv.innerHTML = html;
+
+    // 3. Panggil API Terjemahan (Mirip Google Translate: Indonesia -> Mandarin Tradisional)
+    try {
+        const response = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(query)}&langpair=id|zh-TW`);
+        const data = await response.json();
+
+        const loading = document.getElementById('api-loading');
+        if (loading) loading.remove();
+
+        if (data.responseData && data.responseData.translatedText) {
+            let translated = data.responseData.translatedText;
+            // Bersihkan karakter aneh dari API
+            translated = translated.replace(/&amp;/g, '&').replace(/&#39;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+
+            // Generate Pinyin otomatis dari library yang sudah ada
+            let pinyin = '...';
+            try {
+                if (typeof pinyinPro !== 'undefined' && pinyinPro.pinyin) {
+                    pinyin = pinyinPro.pinyin(translated, { toneType: 'symbol', type: 'array' }).join(' ');
+                }
+            } catch(e) {}
+
+            html += `
+              <div class="tambahan-btn" onclick="addRelationChar('${translated}')">
+                <div class="char">${translated}</div>
+                <div class="pinyin">${pinyin}</div>
+                <div class="desc">${query} (Otomatis)</div>
+              </div>
+            `;
+            resultsDiv.innerHTML += html;
+        } else if (!localMatches.length) {
+            resultsDiv.innerHTML += `<div class="tambahan-empty-search">Gagal menerjemahkan. Tekan ENTER untuk manual: <b style="color:#fbbf24;">${query}</b></div>`;
+        }
+    } catch (e) {
+        const loading = document.getElementById('api-loading');
+        if (loading) loading.remove();
+        if (!localMatches.length) {
+            resultsDiv.innerHTML += `<div class="tambahan-empty-search">Koneksi error. Tekan ENTER untuk manual: <b style="color:#fbbf24;">${query}</b></div>`;
+        }
+    }
 }
 
 function handleSearchKey(e){ 
