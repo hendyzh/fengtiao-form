@@ -259,10 +259,12 @@ button:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,0.3)}
 .persembahan-empty{font-size:13px;color:#9ca3af;font-family:Arial,sans-serif;font-style:italic;width:100%;text-align:center}
 .tambahan-input{width:100%;padding:10px;border:2px solid rgba(59,130,246,0.3);border-radius:8px;font-size:15px;margin-bottom:8px;font-family:Arial,sans-serif;font-weight:bold;background:rgba(0,0,0,0.2);color:#fff}.tambahan-input:focus{outline:none;border-color:#3b82f6;background:rgba(0,0,0,0.3)}
 .tambahan-results{display:flex;flex-wrap:wrap;gap:5px;max-height:280px;overflow-y:auto}
-.tambahan-btn{background:rgba(255,255,255,0.05);border:2px solid rgba(251,191,36,0.2);border-radius:6px;padding:6px 8px;cursor:pointer;min-width:65px;text-align:center;transition:all 0.3s}
+.tambahan-btn{background:rgba(255,255,255,0.05);border:2px solid rgba(251,191,36,0.2);border-radius:8px;padding:8px 6px;cursor:pointer;min-width:90px;text-align:center;transition:all 0.3s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
 .tambahan-btn:hover{background:rgba(59,130,246,0.2);border-color:#3b82f6;transform:translateY(-2px)}
 .tambahan-btn.highlighted{background:rgba(59,130,246,0.3) !important;border-color:#3b82f6 !important;transform:scale(1.05)}
-.tambahan-btn .char{font-size:19px;font-weight:bold;color:#fbbf24;font-family:"SimSun","KaiTi",serif}.tambahan-btn .desc{font-size:11px;color:#9ca3af;font-family:Arial,sans-serif}
+.tambahan-btn .char{font-size:22px;font-weight:bold;color:#fbbf24;font-family:"SimSun","KaiTi",serif;line-height:1.2}
+.tambahan-btn .pinyin{font-size:10px;color:#60a5fa;font-family:Arial,sans-serif;line-height:1}
+.tambahan-btn .desc{font-size:11px;color:#9ca3af;font-family:Arial,sans-serif;line-height:1.2}
 .tambahan-empty-search{text-align:center;color:#9ca3af;font-size:13px;padding:8px;font-family:Arial,sans-serif;width:100%}
 .copy-info-box{background:rgba(16,185,129,0.1);border:1.5px solid rgba(16,185,129,0.3);border-radius:10px;padding:10px 12px;margin-top:12px}.copy-info-box .copy-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}.copy-info-box .copy-title{font-size:13px;color:#10b981;font-weight:bold}.copy-btn{background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;padding:5px 10px;border-radius:6px;font-size:12px;cursor:pointer;font-weight:bold;width:auto;margin:0}.copy-content{font-family:Arial,sans-serif;font-size:13px;color:#e0e0e0;line-height:1.5;word-break:break-word}.copy-content .py-line{color:#60a5fa;font-weight:bold}.copy-content .tr-line{color:#10b981;font-weight:bold}
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;display:none;justify-content:center;align-items:flex-start;padding:30px 15px;overflow-y:auto;backdrop-filter:blur(10px)}.modal-overlay.show{display:flex}
@@ -673,7 +675,35 @@ const TRANSLATION_DICT = { '孝':'yang berbakti','长男':'anak sulung laki-laki
 
 function translatePersembahan(leftTitle, jenis){ try { if(!leftTitle || leftTitle === '孝') return ''; let text = leftTitle; let hasXiao = false; if(text.startsWith('孝')){ hasXiao = true; text = text.substring(1); } let translation = ''; let remaining = text; const sortedKeys = Object.keys(TRANSLATION_DICT).sort((a,b) => b.length - a.length); while(remaining.length > 0){ let matched = false; for(const key of sortedKeys){ if(remaining.startsWith(key)){ if(translation) translation += ' '; translation += TRANSLATION_DICT[key]; remaining = remaining.substring(key.length); matched = true; break; } } if(!matched){ const firstChar = remaining.charAt(0); if(translation) translation += ' '; translation += '[' + firstChar + ']'; remaining = remaining.substring(1); } } if(translation) translation = translation.charAt(0).toUpperCase() + translation.slice(1); const isMultiPeople = (jenis === 'typeD' || jenis === 'typeE' || jenis === 'typeF' || jenis === 'typeG' || jenis === 'typeH'); if(hasXiao && translation && !isMultiPeople) translation += ' yang berbakti'; else if(hasXiao && !translation && !isMultiPeople) translation = 'Yang berbakti'; return translation; } catch(e) { return ''; } }
 
-function searchRelation(){ const query = document.getElementById('relationSearch').value.trim(); const resultsDiv = document.getElementById('searchResults'); searchHighlightIndex = -1; if(!query){ resultsDiv.innerHTML = '<div class="tambahan-empty-search">Ketik untuk mencari...</div>'; return; } const queryLower = query.toLowerCase(); const matches = relationDB.filter(item => item.keys.some(key => key.includes(queryLower)) || item.char.includes(query) || item.desc.toLowerCase().includes(queryLower)); if(matches.length === 0){ resultsDiv.innerHTML = '<div class="tambahan-empty-search">Tidak ditemukan - tekan SPACE/Enter: <b>' + query + '</b></div>'; return; } resultsDiv.innerHTML = matches.map((item, idx) => `<div class="tambahan-btn" data-idx="${idx}" onclick="addRelationChar('${item.char}')"><div class="char">${item.char}</div><div class="desc">${item.desc}</div></div>`).join(''); }
+function searchRelation(){ 
+  const query = document.getElementById('relationSearch').value.trim(); 
+  const resultsDiv = document.getElementById('searchResults'); 
+  searchHighlightIndex = -1; 
+  if(!query){ resultsDiv.innerHTML = '<div class="tambahan-empty-search">Ketik untuk mencari...</div>'; return; } 
+  const queryLower = query.toLowerCase(); 
+  
+  const matches = relationDB.filter(item => 
+    item.keys.some(key => key.includes(queryLower)) || 
+    item.char.includes(query) || 
+    item.desc.toLowerCase().includes(queryLower)
+  );
+  
+  if(matches.length === 0){
+    resultsDiv.innerHTML = `<div class="tambahan-empty-search">Tidak ditemukan. Tekan SPACE/Enter untuk menambahkan teks: <b style="color:#fbbf24;">${query}</b></div>`;
+    return;
+  }
+  
+  resultsDiv.innerHTML = matches.map((item, idx) => {
+    const pinyin = convertToPinyin(item.char) || '';
+    return `
+      <div class="tambahan-btn" data-idx="${idx}" onclick="addRelationChar('${item.char}')">
+        <div class="char">${item.char}</div>
+        <div class="pinyin">${pinyin}</div>
+        <div class="desc">${item.desc}</div>
+      </div>
+    `;
+  }).join('');
+}
 function handleSearchKey(e){ const results = document.querySelectorAll('.tambahan-btn'); const query = document.getElementById('relationSearch').value.trim(); if(e.key === 'Tab' || e.key === 'ArrowRight' || e.key === 'ArrowDown'){ e.preventDefault(); if(results.length > 0){ searchHighlightIndex = (searchHighlightIndex + 1) % results.length; updateHighlight(results); } } else if(e.key === 'ArrowLeft' || e.key === 'ArrowUp'){ e.preventDefault(); if(results.length > 0){ searchHighlightIndex = (searchHighlightIndex - 1 + results.length) % results.length; updateHighlight(results); } } else if(e.key === ' ' || e.key === 'Spacebar' || e.key === 'Enter'){ e.preventDefault(); if(results.length > 0){ if(searchHighlightIndex >= 0 && searchHighlightIndex < results.length) results[searchHighlightIndex].click(); else results[0].click(); } else if(query){ addRelationChar(query); } } else if(e.key === 'Escape'){ e.preventDefault(); document.getElementById('relationSearch').value = ''; searchRelation(); } }
 function updateHighlight(results){ results.forEach((btn, i) => { btn.classList.toggle('highlighted', i === searchHighlightIndex); if(i === searchHighlightIndex) btn.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }); }
 function addRelationChar(char){ const row = batchRows.find(r => r.id === activeBatchRowId); if(!row) return; row.customTitle = (row.customTitle || '') + char; renderPersembahan(); updateBatchFromForm(); toast('✅ ' + char); document.getElementById('relationSearch').value = ''; document.getElementById('searchResults').innerHTML = '<div class="tambahan-empty-search">Ketik untuk mencari...</div>'; searchHighlightIndex = -1; document.getElementById('relationSearch').focus(); }
