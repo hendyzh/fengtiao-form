@@ -153,14 +153,15 @@
 
 .customer-app-container{max-width:750px;margin:30px auto;padding:0;background:rgba(255,255,255,0.03);backdrop-filter:blur(20px);border-radius:25px;box-shadow:0 25px 80px rgba(0,0,0,0.5);font-family:'Segoe UI',sans-serif;overflow:hidden;position:relative;border:1px solid rgba(251,191,36,0.2);animation:fadeIn 0.8s ease-out}
 .customer-header{position:relative;background:linear-gradient(135deg,#7c2d12 0%,#9a3412 50%,#7c2d12 100%);padding:50px 30px;text-align:center;border-bottom:3px solid #fbbf24}
-.customer-header-logo{width:160px;height:160px;object-fit:contain;margin-bottom:25px;filter:drop-shadow(0 10px 30px rgba(0,0,0,0.5));animation:float 4s ease-in-out infinite}
-.customer-header h2{color:#fbbf24;font-size:32px;margin-bottom:15px;font-family:'Georgia',serif;letter-spacing:2px}
-.customer-header .toko-info{color:#fef3c7;font-size:17px;line-height:1.8;font-family:Arial,sans-serif}
-.customer-header .toko-info .shop-name{display:block;font-size:36px;color:#fbbf24;font-family:'Georgia',serif;font-weight:bold;letter-spacing:3px;margin-bottom:10px}
-.customer-header .toko-info .shop-tagline{display:block;font-size:17px;color:#fde68a;font-style:italic;margin-bottom:25px;letter-spacing:1.5px;border-bottom:1px solid rgba(251,191,36,0.3);padding-bottom:20px;max-width:350px;margin-left:auto;margin-right:auto}
-.customer-header .toko-info .shop-address{display:block;font-size:19px;color:#fff;margin-bottom:10px;font-weight:600}
-.customer-header .toko-info .shop-wa{display:block;font-size:24px;font-weight:bold;color:#4ade80;margin-top:15px;letter-spacing:1px}
-.customer-form-body{padding:40px}
+.customer-header { display: flex; align-items: center; padding: 20px; }
+.customer-header-logo { width: 100px; height: 100px; object-fit: contain; margin-bottom: 0; margin-right: 30px; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5)); animation: float 4s ease-in-out infinite; }
+.customer-header h2 { color: #fbbf24; font-size: 24px; margin-bottom: 5px; font-family: 'Georgia', serif; letter-spacing: 2px; flex: 1; text-align: center; }
+.customer-header .toko-info { color: #fef3c7; font-size: 14px; line-height: 1.4; font-family: Arial, sans-serif; flex: 1; text-align: center; }
+.customer-header .toko-info .shop-name { display: inline; font-size: 20px; color: #fbbf24; font-family: 'Georgia', serif; font-weight: bold; letter-spacing: 2px; margin-bottom: 0; }
+.customer-header .toko-info .shop-tagline { display: inline; font-size: 13px; color: #fde68a; font-style: italic; margin-bottom: 0; border-bottom: none; padding-bottom: 0; }
+.customer-header .toko-info .shop-address { display: block; font-size: 14px; color: #fff; margin-bottom: 2px; font-weight: 600; }
+.customer-header .toko-info .shop-wa { display: block; font-size: 16px; font-weight: bold; color: #4ade80; margin-top: 5px; letter-spacing: 1px; }
+.customer-form-body { padding: 40px; }
 .customer-app-container label{display:block;margin-top:20px;font-size:15px;font-weight:bold;color:#fbbf24;letter-spacing:0.5px;text-transform:uppercase}
 .customer-app-container input,.customer-app-container select,.customer-app-container textarea{width:100%;padding:16px 18px;margin-top:10px;background:rgba(0,0,0,0.3);border:2px solid rgba(251,191,36,0.2);border-radius:12px;font-size:16px;color:#fff;box-sizing:border-box;transition:all 0.3s;font-family:Arial,sans-serif}
 .customer-app-container input::placeholder,.customer-app-container textarea::placeholder{color:rgba(251,191,36,0.4)}
